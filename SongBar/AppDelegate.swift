@@ -12,10 +12,16 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
-
+    
+    var sysBar: NSStatusItem!
+    var variableStatusItemLength: CGFloat = -1;
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
+        
+        sysBar = NSStatusBar.systemStatusBar().statusItemWithLength(variableStatusItemLength);
+        sysBar.title = "hello";
+
+        
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -24,4 +30,3 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
 }
-
