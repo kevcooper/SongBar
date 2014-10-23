@@ -685,6 +685,12 @@
                         <action selector="playPause:" target="Voe-Tx-rLC" id="lfh-dT-bPV"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Quit" id="mte-z0-mG2">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="terminate:" target="-1" id="WJY-gN-JVG"/>
+                    </connections>
+                </menuItem>
             </items>
             <point key="canvasLocation" x="-192" y="335.5"/>
         </menu>
