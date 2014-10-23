@@ -58,16 +58,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func updateFromNotification(aNotification: NSNotification){
-        
         let info = aNotification.userInfo! as NSDictionary;
-        let name: String = info.valueForKey("Name") as String;
-        let artist: String = info.valueForKey("Artist") as String;
         
-        if(artist != "" && name != ""){
+        if(info.objectForKey("Name") != nil && info.objectForKey("Artist") != nil){
+            let name: String = info.valueForKey("Name") as String;
+            let artist: String = info.valueForKey("Artist") as String;
+            
             sysBar.title! = name + " - " + artist;
         }else{
             sysBar.title! = "SongBar";
         }
+    }
+    
+    @IBAction func playPause(sender: AnyObject) {
+        iTunes.playpause();
     }
     
     

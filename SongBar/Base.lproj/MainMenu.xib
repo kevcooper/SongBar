@@ -681,6 +681,9 @@
             <items>
                 <menuItem title="Play/Pause" id="JSz-HE-IOT">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="playPause:" target="Voe-Tx-rLC" id="lfh-dT-bPV"/>
+                    </connections>
                 </menuItem>
             </items>
             <point key="canvasLocation" x="-192" y="335.5"/>
