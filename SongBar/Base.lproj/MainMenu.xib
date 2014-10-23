@@ -13,6 +13,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="SongBar" customModuleProvider="target">
             <connections>
+                <outlet property="menu" destination="La1-uj-7QE" id="6NI-bo-v3x"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -678,17 +679,11 @@
         </window>
         <menu id="La1-uj-7QE">
             <items>
-                <menuItem title="Item 1" id="JSz-HE-IOT">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Item 2" id="7aM-5s-WfQ">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Item 3" id="p3x-Kj-p4M">
+                <menuItem title="Play/Pause" id="JSz-HE-IOT">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-106" y="369.5"/>
+            <point key="canvasLocation" x="-192" y="335.5"/>
         </menu>
     </objects>
 </document>

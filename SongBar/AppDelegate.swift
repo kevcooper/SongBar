@@ -15,6 +15,7 @@ import ScriptingBridge
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var window: NSWindow!
+    @IBOutlet weak var menu: NSMenu!
     
     var sysBar: NSStatusItem!
     var iTunes: AnyObject!
@@ -24,13 +25,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         
-        sysBar = NSStatusBar.systemStatusBar().statusItemWithLength(100);
+        sysBar = NSStatusBar.systemStatusBar().statusItemWithLength(variableStatusItemLength);
+        sysBar.menu = menu;
         iTunes = SBApplication.applicationWithBundleIdentifier("com.apple.iTunes");
         
         updateStatusBar();
         
         NSDistributedNotificationCenter.defaultCenter().addObserver(self,
-            selector: "updateStatusBar",
+            selector: "updateFromNotification:",
             name: "com.apple.iTunes.playerInfo",
             object: nil);
         
@@ -53,6 +55,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         
+    }
+    
+    func updateFromNotification(aNotification: NSNotification){
+        
+        let info = aNotification.userInfo! as NSDictionary;
+        let name: String = info.valueForKey("Name") as String;
+        let artist: String = info.valueForKey("Artist") as String;
+        
+        if(artist != "" && name != ""){
+            sysBar.title! = name + " - " + artist;
+        }else{
+            sysBar.title! = "SongBar";
+        }
     }
     
     
