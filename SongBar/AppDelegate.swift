@@ -19,45 +19,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var menu: NSMenu!
     @IBOutlet weak var updater: SUUpdater!
-    
+    @IBOutlet weak var iTunes: iTunesBridge!
     var sysBar: NSStatusItem!
-    var iTunes: AnyObject!
-    
-    //magic number
-    var variableStatusItemLength: CGFloat = -1;
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        updater.checkForUpdatesInBackground();
-        sysBar = NSStatusBar.systemStatusBar().statusItemWithLength(variableStatusItemLength);
-        sysBar.menu = menu;
-        iTunes = SBApplication.applicationWithBundleIdentifier("com.apple.iTunes");
         
-        updateStatusBar();
+        updater.checkForUpdatesInBackground();
+        sysBar = NSStatusBar.systemStatusBar().statusItemWithLength(200);
+        sysBar.menu = menu;
         
         NSDistributedNotificationCenter.defaultCenter().addObserver(self,
             selector: "updateFromNotification:",
             name: "com.apple.iTunes.playerInfo",
             object: nil);
         
+        iTunes.postnNotificationForCurrentTrack();
     }
     
     func applicationWillTerminate(aNotification: NSNotification) {
         NSDistributedNotificationCenter.defaultCenter().removeObserver(self);
-    }
-    
-    func updateStatusBar(){
-        let track: iTunesTrack = iTunes.currentTrack;
-        
-        let name: String = (track.name != nil) ? track.name : "";
-        let artist: String = (track.artist != nil) ? track.artist : "";
-        
-        if(artist != "" && name != ""){
-            sysBar.title! = name + " by " + artist;
-        }else{
-            sysBar.title! = "SongBar";
-        }
-        
-        
     }
     
     func updateFromNotification(aNotification: NSNotification){
@@ -72,10 +52,4 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             sysBar.title! = "SongBar";
         }
     }
-    
-    @IBAction func playPause(sender: AnyObject) {
-        iTunes.playpause();
-    }
-    
-    
 }

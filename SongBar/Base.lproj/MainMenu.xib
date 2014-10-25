@@ -13,6 +13,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="SongBar" customModuleProvider="target">
             <connections>
+                <outlet property="iTunes" destination="pre-v6-Bo5" id="kXl-AD-XXE"/>
                 <outlet property="menu" destination="La1-uj-7QE" id="6NI-bo-v3x"/>
                 <outlet property="updater" destination="Zmm-Zr-hCC" id="fE5-m6-6RL"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
@@ -676,18 +677,6 @@
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="300" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mwh-Hr-dxt">
-                        <rect key="frame" x="72" y="13" width="156" height="32"/>
-                        <buttonCell key="cell" type="push" title="Check for Updates" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mdH-ge-71H">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="checkForUpdates:" target="Zmm-Zr-hCC" id="wL2-HZ-26v"/>
-                        </connections>
-                    </button>
-                </subviews>
             </view>
             <point key="canvasLocation" x="250" y="277"/>
         </window>
@@ -696,7 +685,19 @@
                 <menuItem title="Play/Pause" id="JSz-HE-IOT">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="playPause:" target="Voe-Tx-rLC" id="lfh-dT-bPV"/>
+                        <action selector="playPause:" target="pre-v6-Bo5" id="Eup-2f-C5i"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Next" id="LW0-og-W8W">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="nextTrack:" target="pre-v6-Bo5" id="tGF-7L-ltI"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Previous" id="Y5d-up-Kjd">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="previousTrack:" target="pre-v6-Bo5" id="8h1-td-WPf"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="GRy-hB-e3m"/>
@@ -723,5 +724,7 @@
             <point key="canvasLocation" x="-192" y="335.5"/>
         </menu>
         <customObject id="Zmm-Zr-hCC" customClass="SUUpdater"/>
+        <userDefaultsController representsSharedInstance="YES" id="suu-1N-64r"/>
+        <customObject id="pre-v6-Bo5" userLabel="iTunes" customClass="iTunesBridge" customModule="SongBar" customModuleProvider="target"/>
     </objects>
 </document>

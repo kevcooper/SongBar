@@ -11,6 +11,7 @@
 		36491D3819F6F3330083A49D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36491D3719F6F3330083A49D /* Images.xcassets */; };
 		36491D3B19F6F3330083A49D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36491D3919F6F3330083A49D /* MainMenu.xib */; };
 		36491D4719F6F3330083A49D /* SongBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36491D4619F6F3330083A49D /* SongBarTests.swift */; };
+		36E12E7819FB99780030D24A /* iTunesBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E12E7719FB99780030D24A /* iTunesBridge.swift */; };
 		36E1E1C819FB87FD00C46F94 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36E1E1C719FB87FD00C46F94 /* Sparkle.framework */; };
 		36E1E1CA19FB883400C46F94 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36E1E1C919FB883400C46F94 /* AppKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		36E1E1CC19FB884600C46F94 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36E1E1CB19FB884600C46F94 /* Foundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -53,6 +54,7 @@
 		36491D4019F6F3330083A49D /* SongBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SongBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36491D4519F6F3330083A49D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36491D4619F6F3330083A49D /* SongBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongBarTests.swift; sourceTree = "<group>"; };
+		36E12E7719FB99780030D24A /* iTunesBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesBridge.swift; sourceTree = "<group>"; };
 		36E1E1C719FB87FD00C46F94 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		36E1E1C919FB883400C46F94 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		36E1E1CB19FB884600C46F94 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -105,10 +107,10 @@
 		36491D3219F6F3330083A49D /* SongBar */ = {
 			isa = PBXGroup;
 			children = (
-				36070F9219F775CA00E5B0CD /* iTunes.h */,
+				36E12E7719FB99780030D24A /* iTunesBridge.swift */,
 				36491D3519F6F3330083A49D /* AppDelegate.swift */,
-				36491D3719F6F3330083A49D /* Images.xcassets */,
 				36491D3919F6F3330083A49D /* MainMenu.xib */,
+				36491D3719F6F3330083A49D /* Images.xcassets */,
 				36491D3319F6F3330083A49D /* Supporting Files */,
 			);
 			path = SongBar;
@@ -117,6 +119,7 @@
 		36491D3319F6F3330083A49D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				36070F9219F775CA00E5B0CD /* iTunes.h */,
 				36070F9319F7761200E5B0CD /* SongBar-Bridging-Header.h */,
 				36491D3419F6F3330083A49D /* Info.plist */,
 			);
@@ -252,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36E12E7819FB99780030D24A /* iTunesBridge.swift in Sources */,
 				36491D3619F6F3330083A49D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
