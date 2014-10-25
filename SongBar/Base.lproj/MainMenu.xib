@@ -721,7 +721,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-192" y="335.5"/>
+            <point key="canvasLocation" x="-23" y="370.5"/>
         </menu>
         <customObject id="Zmm-Zr-hCC" customClass="SUUpdater"/>
         <userDefaultsController representsSharedInstance="YES" id="suu-1N-64r"/>

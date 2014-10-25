@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             name: "com.apple.iTunes.playerInfo",
             object: nil);
         
-        iTunes.postnNotificationForCurrentTrack();
+        iTunes.postNotificationForCurrentTrack();
     }
     
     func applicationWillTerminate(aNotification: NSNotification) {

@@ -28,7 +28,7 @@ class iTunesBridge: NSObject {
         iTunes.previousTrack();
     }
     
-    func postnNotificationForCurrentTrack(){
+    func postNotificationForCurrentTrack(){
         var track:iTunesTrack = iTunes.currentTrack;
         
         var info:NSMutableDictionary = NSMutableDictionary();
