@@ -9,6 +9,8 @@
 import Cocoa
 import AppKit
 import ScriptingBridge
+import Foundation
+
 
 @NSApplicationMain
 
@@ -16,6 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var menu: NSMenu!
+    @IBOutlet weak var updater: SUUpdater!
     
     var sysBar: NSStatusItem!
     var iTunes: AnyObject!
@@ -24,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var variableStatusItemLength: CGFloat = -1;
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        
+        updater.checkForUpdatesInBackground();
         sysBar = NSStatusBar.systemStatusBar().statusItemWithLength(variableStatusItemLength);
         sysBar.menu = menu;
         iTunes = SBApplication.applicationWithBundleIdentifier("com.apple.iTunes");

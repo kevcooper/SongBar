@@ -14,6 +14,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="SongBar" customModuleProvider="target">
             <connections>
                 <outlet property="menu" destination="La1-uj-7QE" id="6NI-bo-v3x"/>
+                <outlet property="updater" destination="Zmm-Zr-hCC" id="fE5-m6-6RL"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -670,12 +671,25 @@
         <window title="SongBar" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
+            <rect key="contentRect" x="335" y="390" width="300" height="360"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mwh-Hr-dxt">
+                        <rect key="frame" x="72" y="13" width="156" height="32"/>
+                        <buttonCell key="cell" type="push" title="Check for Updates" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mdH-ge-71H">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="checkForUpdates:" target="Zmm-Zr-hCC" id="wL2-HZ-26v"/>
+                        </connections>
+                    </button>
+                </subviews>
             </view>
+            <point key="canvasLocation" x="250" y="277"/>
         </window>
         <menu id="La1-uj-7QE">
             <items>
@@ -685,6 +699,20 @@
                         <action selector="playPause:" target="Voe-Tx-rLC" id="lfh-dT-bPV"/>
                     </connections>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="GRy-hB-e3m"/>
+                <menuItem title="Preferences" id="3LS-NW-VNC">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="makeKeyAndOrderFront:" target="QvC-M9-y7g" id="uHU-TS-W3k"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Check For Updates" id="hkA-JC-Mwz">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="checkForUpdates:" target="Zmm-Zr-hCC" id="iuU-hO-h3G"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="pLq-zO-JYn"/>
                 <menuItem title="Quit" id="mte-z0-mG2">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -694,5 +722,6 @@
             </items>
             <point key="canvasLocation" x="-192" y="335.5"/>
         </menu>
+        <customObject id="Zmm-Zr-hCC" customClass="SUUpdater"/>
     </objects>
 </document>
