@@ -19,7 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var sysBar: NSStatusItem!
     var iTunes: AnyObject!
-    
+    var Spotify: AnyObject!
     //magic number
     var variableStatusItemLength: CGFloat = -1;
     
@@ -28,6 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         sysBar = NSStatusBar.systemStatusBar().statusItemWithLength(variableStatusItemLength);
         sysBar.menu = menu;
         iTunes = SBApplication.applicationWithBundleIdentifier("com.apple.iTunes");
+        Spotify = SBApplication.applicationWithBundleIdentifier("com.spotify.client")
         
         updateStatusBar();
         
@@ -43,15 +44,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func updateStatusBar(){
-        let track: iTunesTrack = iTunes.currentTrack;
         
-        let name: String = (track.name != nil) ? track.name : "";
-        let artist: String = (track.artist != nil) ? track.artist : "";
+        let iTtrack: iTunesTrack = iTunes.currentTrack;
+        let iTname: String = (iTtrack.name != nil) ? iTtrack.name : "";
+        let iTartist: String = (iTtrack.artist != nil) ? iTtrack.artist : "";
         
-        if(artist != "" && name != ""){
-            sysBar.title! = name + " by " + artist;
-        }else{
+        let sTrack: SpotifyTrack = Spotify.currentTrack;
+        let sName: String = (sTrack.name != nil) ? sTrack.name : "";
+        let sArtist: String = (sTrack.name != nil) ? sTrack.artist : "";
+        
+        if(iTartist == "" && iTname == "" && sArtist == "" && sName == ""){
             sysBar.title! = "SongBar";
+        }else if (sTrack != "" && sName != ""){
+            sysBar.title! = sName + " by " + sArtist;
+            
+        }else {
+            sysBar.title! = iTname + " by " + iTartist
         }
         
         
