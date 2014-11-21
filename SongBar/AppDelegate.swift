@@ -16,10 +16,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var menu: NSMenu!
+    @IBOutlet weak var iTunesOutlet: NSMenuItem!
+    @IBOutlet weak var spotifyOutlet: NSMenuItem!
     
     var sysBar: NSStatusItem!
     var iTunes: AnyObject!
     var Spotify: AnyObject!
+    var MusicApp: String? = nil
+    var timer: NSTimer?
+    
     //magic number
     var variableStatusItemLength: CGFloat = -1;
     
@@ -29,6 +34,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         sysBar.menu = menu;
         iTunes = SBApplication.applicationWithBundleIdentifier("com.apple.iTunes");
         Spotify = SBApplication.applicationWithBundleIdentifier("com.spotify.client")
+        
+        MusicApp = NSUserDefaults.standardUserDefaults().valueForKey("MusicApp")?.string
+        
+        if MusicApp == "Spotify" {
+            iTunesOutlet.title = "iTunes"
+            spotifyOutlet.title = "Spotify √"
+            MusicApp = "Spotify"
+        } else {
+            iTunesOutlet.title = "iTunes √"
+            spotifyOutlet.title = "Spotify"
+            timer?.invalidate()
+            MusicApp = "iTunes"
+            
+        }
         
         updateStatusBar();
         
@@ -44,25 +63,54 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func updateStatusBar(){
-        
-        let iTtrack: iTunesTrack = iTunes.currentTrack;
-        let iTname: String = (iTtrack.name != nil) ? iTtrack.name : "";
-        let iTartist: String = (iTtrack.artist != nil) ? iTtrack.artist : "";
-        
-        let sTrack: SpotifyTrack = Spotify.currentTrack;
-        let sName: String = (sTrack.name != nil) ? sTrack.name : "";
-        let sArtist: String = (sTrack.name != nil) ? sTrack.artist : "";
-        
-        if(iTartist == "" && iTname == "" && sArtist == "" && sName == ""){
-            sysBar.title! = "SongBar";
-        }else if (sTrack != "" && sName != ""){
-            sysBar.title! = sName + " by " + sArtist;
-            
-        }else {
-            sysBar.title! = iTname + " by " + iTartist
+    
+        if MusicApp == nil {
+            MusicApp =  "iTunes"
         }
+        switch MusicApp! {
+            case "iTunes":
+                let track: iTunesTrack = iTunes.currentTrack;
+                let name: String = (track.name != nil) ? track.name : "";
+                let artist: String = (track.artist != nil) ? track.artist : "";
+            
+                
+                if(artist == "" && name == ""){
+                    sysBar.title! = "SongBar";
+                } else {
+                    sysBar.title! = name + " by " + artist
+                    
+            }
+            
+            case "Spotify":
+                updateSpotify()
+                
+                let track: SpotifyTrack = Spotify.currentTrack;
+                let name: String = (track.name != nil) ? track.name : "";
+                let artist: String = (track.name != nil) ? track.artist : "";
+            
+                if(artist == "" && name == ""){
+                    sysBar.title! = "SongBar";
+                } else {
+                    sysBar.title! = name + " by " + artist
+            }
+            default:
+                let track: iTunesTrack = iTunes.currentTrack;
+                let name: String = (track.name != nil) ? track.name : "";
+                let artist: String = (track.artist != nil) ? track.artist : "";
+            
+                if(artist == "" && name == ""){
+                    sysBar.title! = "SongBar";
+                } else {
+                    sysBar.title! = name + " by " + artist
+                }
         
-        
+            }
+    }
+    
+    func updateSpotify() {
+        if timer == nil{
+            timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "updateStatusBar", userInfo: nil, repeats: true)
+        }
     }
     
     func updateFromNotification(aNotification: NSNotification){
@@ -79,8 +127,33 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func playPause(sender: AnyObject) {
-        iTunes.playpause();
+        if MusicApp != nil {
+            switch MusicApp!{
+            case "iTunes":
+                iTunes.playpause();
+            case "Spotify":
+                Spotify.playpause()
+            default:
+                iTunes.playpause()
+            }
+        }
+    }
+   
+    @IBAction func switchiTunes(sender: AnyObject) {
+        iTunesOutlet.title = "iTunes √"
+        spotifyOutlet.title = "Spotify"
+        timer?.invalidate()
+        MusicApp = "iTunes"
+        NSUserDefaults.standardUserDefaults().setValue("iTunes", forKey: "MusicApp")
     }
     
+    @IBAction func switchSpotify(sender: AnyObject) {
+        iTunesOutlet.title = "iTunes"
+        spotifyOutlet.title = "Spotify √"
+        MusicApp = "Spotify"
+        NSUserDefaults.standardUserDefaults().setValue("Spotify", forKey: "MusicApp")
+        updateStatusBar()
+    }
     
 }
+

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14C68k" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
@@ -13,7 +13,9 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="SongBar" customModuleProvider="target">
             <connections>
+                <outlet property="iTunesOutlet" destination="94J-hH-B6y" id="ciF-u3-Hz2"/>
                 <outlet property="menu" destination="La1-uj-7QE" id="6NI-bo-v3x"/>
+                <outlet property="spotifyOutlet" destination="rXM-4w-Os3" id="M12-fO-oFg"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -679,10 +681,29 @@
         </window>
         <menu id="La1-uj-7QE">
             <items>
+                <menuItem title="Music App" id="adO-5z-Rhb">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Music App" id="6VF-tV-CDn">
+                        <items>
+                            <menuItem title="iTunes" id="94J-hH-B6y">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="switchiTunes:" target="Voe-Tx-rLC" id="U4g-bl-Cjb"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Spotify" id="rXM-4w-Os3">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="switchSpotify:" target="Voe-Tx-rLC" id="XEn-jf-aEH"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Play/Pause" id="JSz-HE-IOT">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="playPause:" target="Voe-Tx-rLC" id="lfh-dT-bPV"/>
+                        <action selector="playPause:" target="Voe-Tx-rLC" id="7pT-yn-VBy"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Quit" id="mte-z0-mG2">
@@ -692,7 +713,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-192" y="335.5"/>
+            <point key="canvasLocation" x="-3" y="272.5"/>
         </menu>
     </objects>
 </document>
