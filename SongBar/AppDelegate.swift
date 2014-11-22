@@ -24,7 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var Spotify: AnyObject!
     var MusicApp: String? = nil
     var timer: NSTimer?
-    
+    var timerRunning: Bool = false
     //magic number
     var variableStatusItemLength: CGFloat = -1;
     
@@ -108,7 +108,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func updateSpotify() {
-        if timer == nil{
+        if timerRunning == false{
             timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "updateStatusBar", userInfo: nil, repeats: true)
         }
     }
