@@ -25,13 +25,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var MusicApp: String? = nil
     var timer: NSTimer?
     var timerRunning: Bool = false
-    //magic number
     var variableStatusItemLength: CGFloat = -1;
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         
         sysBar = NSStatusBar.systemStatusBar().statusItemWithLength(variableStatusItemLength);
         sysBar.menu = menu;
+        sysBar.highlightMode = true
         iTunes = SBApplication.applicationWithBundleIdentifier("com.apple.iTunes");
         Spotify = SBApplication.applicationWithBundleIdentifier("com.spotify.client")
         
@@ -110,6 +110,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func updateSpotify() {
         if timerRunning == false{
             timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "updateStatusBar", userInfo: nil, repeats: true)
+            timerRunning = true
         }
     }
     
@@ -143,6 +144,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         iTunesOutlet.title = "iTunes √"
         spotifyOutlet.title = "Spotify"
         timer?.invalidate()
+        timerRunning = false
         MusicApp = "iTunes"
         NSUserDefaults.standardUserDefaults().setValue("iTunes", forKey: "MusicApp")
     }
