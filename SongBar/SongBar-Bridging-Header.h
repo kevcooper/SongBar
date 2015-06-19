@@ -12,3 +12,4 @@
 #endif
 
 #import "iTunes.h"
+#import "Spotify.h"

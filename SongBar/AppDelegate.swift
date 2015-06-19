@@ -61,8 +61,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let info = aNotification.userInfo! as NSDictionary;
         
         if(info.objectForKey("Name") != nil && info.objectForKey("Artist") != nil){
-            let name: String = info.valueForKey("Name") as String;
-            let artist: String = info.valueForKey("Artist") as String;
+            let name: String = info.valueForKey("Name") as! String;
+            let artist: String = info.valueForKey("Artist")as! String;
             
             sysBar.title! = name + " - " + artist;
         }else{

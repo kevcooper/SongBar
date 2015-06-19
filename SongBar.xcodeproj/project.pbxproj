@@ -36,6 +36,7 @@
 		36491D4019F6F3330083A49D /* SongBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SongBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36491D4519F6F3330083A49D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36491D4619F6F3330083A49D /* SongBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongBarTests.swift; sourceTree = "<group>"; };
+		D030C7021B34E0F3004D233D /* Spotify.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Spotify.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				36070F9219F775CA00E5B0CD /* iTunes.h */,
+				D030C7021B34E0F3004D233D /* Spotify.h */,
 				36070F9319F7761200E5B0CD /* SongBar-Bridging-Header.h */,
 				36491D3519F6F3330083A49D /* AppDelegate.swift */,
 				36491D3719F6F3330083A49D /* Images.xcassets */,
