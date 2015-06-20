@@ -17,6 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var menu: NSMenu!
     
+    var lastServiceUsed: Service?
+    
     var sysBar: NSStatusItem!
     var iTunes: AnyObject!
     var Spotify: AnyObject!
@@ -77,6 +79,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let artist: String = info.valueForKey("Artist")as! String;
             
             sysBar.title! = name + " - " + artist;
+            lastServiceUsed = Service.iTunes
         }else{
             sysBar.title! = "SongBar";
         }
@@ -89,13 +92,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let artist: String = info["Artist"] as! String
             
             sysBar.title = "\(name) - \(artist)"
+            
+            lastServiceUsed = Service.spotify
         } else{
             sysBar.title! = "SongBar";
         }
     }
     
     @IBAction func playPause(sender: AnyObject) {
-        iTunes.playpause();
+        if lastServiceUsed == Service.iTunes{
+            iTunes.playpause();
+        } else if lastServiceUsed == Service.spotify{
+            Spotify.playpause()
+        } else {
+            iTunes.playpause()
+        }
     }
     
 
