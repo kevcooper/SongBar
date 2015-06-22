@@ -29,8 +29,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         sysBar = NSStatusBar.systemStatusBar().statusItemWithLength(variableStatusItemLength);
         sysBar.menu = menu;
-        iTunes = SBApplication.applicationWithBundleIdentifier("com.apple.iTunes");
-        Spotify = SBApplication.applicationWithBundleIdentifier("com.spotify.client")
+        iTunes = SBApplication(bundleIdentifier: "com.apple.iTunes")
+        Spotify = SBApplication(bundleIdentifier: "com.spotify.client")
         
         updateStatusBar();
         
