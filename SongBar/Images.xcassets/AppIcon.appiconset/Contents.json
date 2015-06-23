@@ -3,61 +3,61 @@
     {
       "size" : "16x16",
       "idiom" : "mac",
-      "filename" : "SongBar16.png",
+      "filename" : "AppIcon-1 16.png",
       "scale" : "1x"
     },
     {
       "size" : "16x16",
       "idiom" : "mac",
-      "filename" : "SongBar32-1.png",
+      "filename" : "AppIcon-1 32-1.png",
       "scale" : "2x"
     },
     {
       "size" : "32x32",
       "idiom" : "mac",
-      "filename" : "SongBar32.png",
+      "filename" : "AppIcon-1 32.png",
       "scale" : "1x"
     },
     {
       "size" : "32x32",
       "idiom" : "mac",
-      "filename" : "SongBar64.png",
+      "filename" : "AppIcon-1 64.png",
       "scale" : "2x"
     },
     {
       "size" : "128x128",
       "idiom" : "mac",
-      "filename" : "SongBar128.png",
+      "filename" : "AppIcon-1 128.png",
       "scale" : "1x"
     },
     {
       "size" : "128x128",
       "idiom" : "mac",
-      "filename" : "SongBar256-1.png",
+      "filename" : "AppIcon-1 256-1.png",
       "scale" : "2x"
     },
     {
       "size" : "256x256",
       "idiom" : "mac",
-      "filename" : "SongBar256.png",
+      "filename" : "AppIcon-1 256.png",
       "scale" : "1x"
     },
     {
       "size" : "256x256",
       "idiom" : "mac",
-      "filename" : "SongBar512-1.png",
+      "filename" : "AppIcon-1 512-1.png",
       "scale" : "2x"
     },
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "SongBar512.png",
+      "filename" : "AppIcon-1 512.png",
       "scale" : "1x"
     },
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "SongBar.png",
+      "filename" : "AppIcon-1 .png",
       "scale" : "2x"
     }
   ],
