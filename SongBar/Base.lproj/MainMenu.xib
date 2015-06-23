@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -671,7 +671,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -685,6 +685,12 @@
                         <action selector="playPause:" target="Voe-Tx-rLC" id="lfh-dT-bPV"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Check for Update" id="Je7-Of-Ufs">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="checkForUpdates:" target="s3c-Zh-gyd" id="6SN-7d-mxt"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Quit" id="mte-z0-mG2">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -692,7 +698,8 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-192" y="335.5"/>
+            <point key="canvasLocation" x="-94" y="319.5"/>
         </menu>
+        <customObject id="s3c-Zh-gyd" customClass="SUUpdater"/>
     </objects>
 </document>
