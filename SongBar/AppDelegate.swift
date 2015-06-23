@@ -62,8 +62,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if(artist != "" && name != ""){
             sysBar.title! = name + " - " + artist;
+            self.lastServiceUsed = Service.iTunes
         }else if spotifyArtist != "" && spotifyName != ""{
             sysBar.title = "\(spotifyName) - \(spotifyArtist)"
+            self.lastServiceUsed = Service.spotify
         }else{
             sysBar.title! = "SongBar";
         }
@@ -102,10 +104,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func playPause(sender: AnyObject) {
         if lastServiceUsed == Service.iTunes{
             iTunes.playpause();
-        } else if lastServiceUsed == Service.spotify{
-            Spotify.playpause()
         } else {
-            iTunes.playpause()
+            Spotify.playpause()
         }
     }
     
