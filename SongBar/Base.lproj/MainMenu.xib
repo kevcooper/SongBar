@@ -685,12 +685,6 @@
                         <action selector="playPause:" target="Voe-Tx-rLC" id="lfh-dT-bPV"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Check for Update" id="Je7-Of-Ufs">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="checkForUpdates:" target="s3c-Zh-gyd" id="6SN-7d-mxt"/>
-                    </connections>
-                </menuItem>
                 <menuItem title="Quit" id="mte-z0-mG2">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -700,6 +694,5 @@
             </items>
             <point key="canvasLocation" x="-94" y="319.5"/>
         </menu>
-        <customObject id="s3c-Zh-gyd" customClass="SUUpdater"/>
     </objects>
 </document>
