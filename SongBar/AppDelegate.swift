@@ -32,7 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         iTunes = SBApplication.applicationWithBundleIdentifier("com.apple.iTunes");
         if let Spotify: AnyObject = SBApplication.applicationWithBundleIdentifier("com.spotify.client")
         {
-            
+            self.Spotify = Spotify
         }
         
         updateStatusBar();
