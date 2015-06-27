@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var sysBar: NSStatusItem!
     var iTunes: AnyObject!
-    var Spotify: AnyObject!
+    var Spotify: AnyObject?
     //magic number
     var variableStatusItemLength: CGFloat = -1;
     
@@ -30,7 +30,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         sysBar = NSStatusBar.systemStatusBar().statusItemWithLength(variableStatusItemLength);
         sysBar.menu = menu;
         iTunes = SBApplication.applicationWithBundleIdentifier("com.apple.iTunes");
-        Spotify = SBApplication.applicationWithBundleIdentifier("com.spotify.client")
+        if let Spotify: AnyObject = SBApplication.applicationWithBundleIdentifier("com.spotify.client")
+        {
+            
+        }
         
         updateStatusBar();
         
@@ -52,14 +55,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func updateStatusBar(){
 
         let track: iTunesTrack = iTunes.currentTrack;
-        let spotifyTrack: SpotifyTrack = Spotify.currentTrack
+        var spotifyName: String?
+        var spotifyArtist: String?
+        if let spotifyTrack: SpotifyTrack = Spotify?.currentTrack {
+            spotifyName = spotifyTrack.name != nil ? spotifyTrack.name : ""
+            spotifyArtist = spotifyTrack.artist != nil ? spotifyTrack.artist : ""
+        }
         
         let name: String = (track.name != nil) ? track.name : "";
         let artist: String = (track.artist != nil) ? track.artist : "";
         
-        let spotifyName: String = spotifyTrack.name != nil ? spotifyTrack.name : ""
-        let spotifyArtist: String = spotifyTrack.artist != nil ? spotifyTrack.artist : ""
         
+
         if(artist != "" && name != ""){
             sysBar.title! = name + " - " + artist;
             self.lastServiceUsed = Service.iTunes
@@ -85,7 +92,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             lastServiceUsed = Service.iTunes
         }else{
             sysBar.title! = "SongBar";
-            self.lastServiceUsed = Service.iTunes
         }
     }
     
@@ -107,7 +113,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if lastServiceUsed == Service.iTunes{
             iTunes.playpause();
         } else {
-            Spotify.playpause()
+            Spotify!.playpause()
         }
     }
     
