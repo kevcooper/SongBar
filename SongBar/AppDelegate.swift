@@ -68,6 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.lastServiceUsed = Service.spotify
         }else{
             sysBar.title! = "SongBar";
+            self.lastServiceUsed = Service.iTunes
         }
         
         
@@ -84,6 +85,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             lastServiceUsed = Service.iTunes
         }else{
             sysBar.title! = "SongBar";
+            self.lastServiceUsed = Service.iTunes
         }
     }
     
