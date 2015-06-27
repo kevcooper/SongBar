@@ -67,12 +67,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         
 
-        if(artist != "" && name != ""){
+        if  spotifyArtist != nil && spotifyName != nil{
+            sysBar.title = "\(spotifyName!) - \(spotifyArtist!)"
+            self.lastServiceUsed = Service.spotify
+        }else if artist != "" && name != ""{
             sysBar.title! = name + " - " + artist;
             self.lastServiceUsed = Service.iTunes
-        }else if spotifyArtist != "" && spotifyName != ""{
-            sysBar.title = "\(spotifyName) - \(spotifyArtist)"
-            self.lastServiceUsed = Service.spotify
         }else{
             sysBar.title! = "SongBar";
             self.lastServiceUsed = Service.iTunes
