@@ -32,7 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         iTunes = SBApplication.applicationWithBundleIdentifier("com.apple.iTunes");
         if let Spotify: AnyObject = SBApplication.applicationWithBundleIdentifier("com.spotify.client")
         {
-            self.Spotify = Spotify
+            self.Spotify = SBApplication.applicationWithBundleIdentifier("com.spotify.client")
         }
         
         updateStatusBar();
@@ -90,7 +90,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             sysBar.title! = name + " - " + artist;
             lastServiceUsed = Service.iTunes
-        }else{
+        }else if (info.objectForKey("Name") != nil && info.objectForKey("Artist") == nil) {
+            let name: String = info.valueForKey("Name") as! String;
+            sysBar.title = "\(name)"
+        }
+        
+        else{
             sysBar.title! = "SongBar";
         }
     }
