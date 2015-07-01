@@ -90,6 +90,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             sysBar.title! = name + " - " + artist;
             lastServiceUsed = Service.iTunes
+        }else if (info.objectForKey("Name") != nil && info.objectForKey("Artist") == nil) {
+            let name: String = info.valueForKey("Name") as! String;
+            sysBar.title! = "\(name)"
         }else{
             sysBar.title! = "SongBar";
         }
