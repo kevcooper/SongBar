@@ -67,7 +67,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         
 
-        if  spotifyArtist != nil && spotifyName != nil{
+        if  spotifyArtist != nil  && spotifyName != nil{
             sysBar.title = "\(spotifyName!) - \(spotifyArtist!)"
             self.lastServiceUsed = Service.spotify
         }else if artist != "" && name != ""{
@@ -121,6 +121,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
 
+    @IBAction func findInStore(sender: AnyObject) {
+        var searchString: NSString = sysBar.title! as NSString
+        StoreSearch.sharedInstance.search(searchString)
+    }
+   
 }
 
 enum Service {

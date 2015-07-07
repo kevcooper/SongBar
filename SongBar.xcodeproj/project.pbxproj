@@ -11,6 +11,7 @@
 		36491D3819F6F3330083A49D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36491D3719F6F3330083A49D /* Images.xcassets */; };
 		36491D3B19F6F3330083A49D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36491D3919F6F3330083A49D /* MainMenu.xib */; };
 		36491D4719F6F3330083A49D /* SongBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36491D4619F6F3330083A49D /* SongBarTests.swift */; };
+		D06418D21B4B1301000F5FEF /* StoreSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06418D11B4B1301000F5FEF /* StoreSearch.swift */; };
 		D0EBE4B81B3E64F7008132C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EBE4B71B3E64F7008132C8 /* AppDelegate.swift */; };
 		F29F537961C897A0E26089FB /* libPods-SongBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 356FA4730F316ADE4EB76BB3 /* libPods-SongBar.a */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 		36491D4619F6F3330083A49D /* SongBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongBarTests.swift; sourceTree = "<group>"; };
 		9BB780C379EF147027F4CBC8 /* Pods-SongBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SongBar.release.xcconfig"; path = "Pods/Target Support Files/Pods-SongBar/Pods-SongBar.release.xcconfig"; sourceTree = "<group>"; };
 		D030C7021B34E0F3004D233D /* Spotify.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Spotify.h; sourceTree = "<group>"; };
+		D06418D11B4B1301000F5FEF /* StoreSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreSearch.swift; sourceTree = "<group>"; };
 		D0EBE4B71B3E64F7008132C8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +101,7 @@
 				36070F9219F775CA00E5B0CD /* iTunes.h */,
 				D030C7021B34E0F3004D233D /* Spotify.h */,
 				36070F9319F7761200E5B0CD /* SongBar-Bridging-Header.h */,
+				D06418D11B4B1301000F5FEF /* StoreSearch.swift */,
 				D0EBE4B71B3E64F7008132C8 /* AppDelegate.swift */,
 				36491D3719F6F3330083A49D /* Images.xcassets */,
 				36491D3919F6F3330083A49D /* MainMenu.xib */,
@@ -295,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0EBE4B81B3E64F7008132C8 /* AppDelegate.swift in Sources */,
+				D06418D21B4B1301000F5FEF /* StoreSearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
