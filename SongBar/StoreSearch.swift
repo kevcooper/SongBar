@@ -29,20 +29,14 @@ class StoreSearch: NSObject {
                     var songArray: NSArray = songs["results"] as! NSArray
                     var songDictionary: NSDictionary = songArray[0] as! NSDictionary
                     var songURL: NSString = songDictionary["trackViewUrl"] as! NSString
-                    let version: NSString = self.getiTunesVersion()
-                    songURL = version.containsString("12.2.0") ? songURL : songURL.stringByReplacingOccurrencesOfString("https://", withString: "itms://")
-                    
-                    NSWorkspace.sharedWorkspace().openURL(NSURL(string: songURL as String)!)
+                    songURL =  songURL.stringByReplacingOccurrencesOfString("https://", withString: "itms://")
+                    print("\(songURL)")
+                    NSWorkspace.sharedWorkspace().openURL(NSURL(string: "\(songURL)&app=itunes" as String)!)
                 })
             }
         })
        task.resume()
     }
     
-    func getiTunesVersion()-> NSString {
-        let iTunesPlistPath: String = "/Applications/iTunes.app/Contents/Info.plist"
-        let plist: NSDictionary? = NSDictionary(contentsOfFile: iTunesPlistPath)
-        return plist!["CFBundleGetInfoString"] as! NSString
-    }
 
 }
