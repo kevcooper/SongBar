@@ -122,6 +122,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    @IBAction func findInStore(sender: AnyObject) {
+        var searchString: NSString = sysBar.title! as NSString
+        StoreSearch.sharedInstance.search(searchString)
+    }
+ 
 
 }
 
