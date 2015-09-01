@@ -29,10 +29,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         sysBar = NSStatusBar.systemStatusBar().statusItemWithLength(variableStatusItemLength);
         sysBar.menu = menu;
-        iTunes = SBApplication.applicationWithBundleIdentifier("com.apple.iTunes");
-        if let Spotify: AnyObject = SBApplication.applicationWithBundleIdentifier("com.spotify.client")
+        iTunes = SBApplication(bundleIdentifier: "com.apple.iTunes")
+        if let Spotify: AnyObject = SBApplication(bundleIdentifier: "com.spotify.client")
         {
-            self.Spotify = SBApplication.applicationWithBundleIdentifier("com.spotify.client")
+            self.Spotify = Spotify
         }
         
         updateStatusBar();
@@ -122,7 +122,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
 
     @IBAction func findInStore(sender: AnyObject) {
-        var searchString: NSString = sysBar.title! as NSString
+        let searchString: NSString = sysBar.title! as NSString
         StoreSearch.sharedInstance.search(searchString)
     }
    
