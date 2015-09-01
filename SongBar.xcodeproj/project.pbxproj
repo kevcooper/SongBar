@@ -61,13 +61,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2CBEF851F4265637FCFD9C3D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		36491D2719F6F3330083A49D = {
 			isa = PBXGroup;
 			children = (
@@ -75,7 +68,6 @@
 				36491D3219F6F3330083A49D /* SongBar */,
 				36491D4319F6F3330083A49D /* SongBarTests */,
 				36491D3119F6F3330083A49D /* Products */,
-				2CBEF851F4265637FCFD9C3D /* Pods */,
 				E6B49CA74133F3CF05D6312F /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -181,6 +173,7 @@
 		36491D2819F6F3330083A49D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = corpe;
 				TargetAttributes = {
