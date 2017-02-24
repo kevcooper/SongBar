@@ -10,28 +10,37 @@ import Cocoa
 
 class StoreSearch: NSObject {
     
-    static let sharedInstance: StoreSearch = StoreSearch()
-    
-    func search(terms: NSString){
+    class func search(_ terms: NSString){
         let baseURLString: String = "https://itunes.apple.com/search?term="
-        var fullURL = "\(baseURLString)\(terms)".stringByReplacingOccurrencesOfString("-", withString: "", options: nil, range: nil)
-        fullURL = fullURL.stringByReplacingOccurrencesOfString(" ", withString: "+", options: nil, range: nil)
-        fullURL = fullURL.stringByReplacingOccurrencesOfString("++", withString: "+", options: nil, range: nil)
+        var fullURL =  "\(baseURLString) \(terms)".replacingOccurrences(of: "-", with: "")
+        fullURL = fullURL.replacingOccurrences(of: " ", with: "+")
+        fullURL = fullURL.replacingOccurrences(of: "++", with: "+")
         
-        let request: NSURLRequest = NSURLRequest(URL: NSURL(string: fullURL)!)
-        let session = NSURLSession.sharedSession()
+        let request: URLRequest = URLRequest(url: URL(string: fullURL)!)
+        let session = URLSession.shared
         
-        let task = session.dataTaskWithRequest(request, completionHandler: { (data, responce, error) -> Void in
-            var songs: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as! NSDictionary
+        let task = session.dataTask(with: request, completionHandler: { (data, responce, error) -> Void in
+            let result: NSDictionary?
+            do {
+                result = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves) as? NSDictionary
+                
+            } catch {
+                print("Failed to convert json data to NSDictonary")
+                return
+            }
+            guard let songArray: NSArray = result?["results"] as? NSArray
+                else {
+                    print("failed to key \"result\" in result dictorary")
+                    return
+            }
             
-            if songs["results"]?.count > 0 {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    var songArray: NSArray = songs["results"] as! NSArray
-                    var songDictionary: NSDictionary = songArray[0] as! NSDictionary
+            if songArray.count > 0 {
+                DispatchQueue.main.async(execute: { () -> Void in
+                    let songDictionary: NSDictionary = songArray[0] as! NSDictionary
                     var songURL: NSString = songDictionary["trackViewUrl"] as! NSString
-                    songURL =  songURL.stringByReplacingOccurrencesOfString("https://", withString: "itms://")
+                    songURL =  songURL.replacingOccurrences(of: "https://", with: "itms://") as NSString
                     print("\(songURL)")
-                    NSWorkspace.sharedWorkspace().openURL(NSURL(string: "\(songURL)&app=itunes" as String)!)
+                    NSWorkspace.shared().open(URL(string: "\(songURL)&app=itunes" as String)!)
                 })
             }
         })

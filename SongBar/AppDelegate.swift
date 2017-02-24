@@ -22,39 +22,40 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var sysBar: NSStatusItem!
     var iTunes: AnyObject!
     var Spotify: AnyObject?
+    
     //magic number
     var variableStatusItemLength: CGFloat = -1;
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         
-        sysBar = NSStatusBar.systemStatusBar().statusItemWithLength(variableStatusItemLength);
+        sysBar = NSStatusBar.system().statusItem(withLength: variableStatusItemLength);
         sysBar.menu = menu;
-        iTunes = SBApplication.applicationWithBundleIdentifier("com.apple.iTunes");
-        if let Spotify: AnyObject = SBApplication.applicationWithBundleIdentifier("com.spotify.client")
+        iTunes = SBApplication(bundleIdentifier:"com.apple.iTunes")!
+        if let spotify = SBApplication(bundleIdentifier: "com.spotify.client")
         {
-            self.Spotify = SBApplication.applicationWithBundleIdentifier("com.spotify.client")
+            self.Spotify = spotify
         }
         
         updateStatusBar();
         
-        NSDistributedNotificationCenter.defaultCenter().addObserver(self,
-                                                                    selector: "updateiTuensFromNotification:",
-                                                                        name: "com.apple.iTunes.playerInfo",
-                                                                      object: nil);
-        NSDistributedNotificationCenter.defaultCenter().addObserver(self,
-                                                                    selector: "updateSpotifyFromNotification:",
-                                                                        name: "com.spotify.client.PlaybackStateChanged",
+        DistributedNotificationCenter.default().addObserver(self,
+                                                                    selector: #selector(self.updateiTuensFromNotification(_:)),
+                                                                        name: NSNotification.Name(rawValue: "com.apple.iTunes.playerInfo"),
+                                                                      object: nil)
+        DistributedNotificationCenter.default().addObserver(self,
+                                                                    selector: #selector(self.updateSpotifyFromNotification(_:)),
+                                                                    name: NSNotification.Name(rawValue:"com.spotify.client.PlaybackStateChanged"),
                                                                       object: nil)
         
     }
     
-    func applicationWillTerminate(aNotification: NSNotification) {
-        NSDistributedNotificationCenter.defaultCenter().removeObserver(self);
+    func applicationWillTerminate(_ aNotification: Notification) {
+        DistributedNotificationCenter.default().removeObserver(self);
     }
     
     func updateStatusBar(){
 
-        let track: iTunesTrack = iTunes.currentTrack;
+        let track: iTunesTrack = iTunes.currentTrack
         var spotifyName: String?
         var spotifyArtist: String?
         if let spotifyTrack: SpotifyTrack = Spotify?.currentTrack {
@@ -81,17 +82,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
-    func updateiTuensFromNotification(aNotification: NSNotification){
+    func updateiTuensFromNotification(_ aNotification: Notification){
         let info = aNotification.userInfo! as NSDictionary;
         
-        if(info.objectForKey("Name") != nil && info.objectForKey("Artist") != nil){
-            let name: String = info.valueForKey("Name") as! String;
-            let artist: String = info.valueForKey("Artist")as! String;
+        if(info.object(forKey: "Name") != nil && info.object(forKey: "Artist") != nil){
+            let name: String = info.value(forKey: "Name") as! String;
+            let artist: String = info.value(forKey: "Artist")as! String;
             
             sysBar.title! = name + " - " + artist;
             lastServiceUsed = Service.iTunes
-        }else if (info.objectForKey("Name") != nil && info.objectForKey("Artist") == nil) {
-            let name: String = info.valueForKey("Name") as! String;
+        }else if (info.object(forKey: "Name") != nil && info.object(forKey: "Artist") == nil) {
+            let name: String = info.value(forKey: "Name") as! String;
             sysBar.title = "\(name)"
         }
         
@@ -100,7 +101,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func updateSpotifyFromNotification(aNotification: NSNotification){
+    func updateSpotifyFromNotification(_ aNotification: Notification){
                 let info = aNotification.userInfo! as NSDictionary;
         if info["Name"] != nil && info["Artist"] != nil {
             let name: String = info["Name"] as! String
@@ -114,7 +115,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    @IBAction func playPause(sender: AnyObject) {
+    @IBAction func playPause(_ sender: AnyObject) {
         if lastServiceUsed == Service.iTunes{
             iTunes.playpause();
         } else {
@@ -122,9 +123,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    @IBAction func findInStore(sender: AnyObject) {
-        var searchString: NSString = sysBar.title! as NSString
-        StoreSearch.sharedInstance.search(searchString)
+    @IBAction func findInStore(_ sender: AnyObject) {
+        let searchString: NSString = sysBar.title! as NSString
+        StoreSearch.search(searchString)
     }
  
 
