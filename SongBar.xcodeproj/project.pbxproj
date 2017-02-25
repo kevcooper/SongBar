@@ -18,6 +18,7 @@
 		D0726E241E613645003A5920 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C80D731E610FA800DCF192 /* Constants.swift */; };
 		D0726E251E61393B003A5920 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36491D3519F6F3330083A49D /* AppDelegate.swift */; };
 		D0726E261E613982003A5920 /* StoreSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0502ACB1B757770009A90BF /* StoreSearch.swift */; };
+		D0726E301E624098003A5920 /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0726E2F1E624098003A5920 /* MusicView.swift */; };
 		D0C80D741E610FA800DCF192 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C80D731E610FA800DCF192 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		36491D4619F6F3330083A49D /* SongBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongBarTests.swift; sourceTree = "<group>"; };
 		D006466F1E5FCFDB00354D07 /* MediaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaController.swift; sourceTree = "<group>"; };
 		D0502ACB1B757770009A90BF /* StoreSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreSearch.swift; sourceTree = "<group>"; };
+		D0726E2F1E624098003A5920 /* MusicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
 		D0BEEFC11E5FBB990074EB25 /* Spotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spotify.h; sourceTree = "<group>"; };
 		D0BEEFC21E5FBBB50074EB25 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
 		D0C80D731E610FA800DCF192 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -94,11 +96,10 @@
 			isa = PBXGroup;
 			children = (
 				D0C80D721E60FF6500DCF192 /* Headers */,
-				36070F9319F7761200E5B0CD /* SongBar-Bridging-Header.h */,
+				D0726E271E62373A003A5920 /* Controllers */,
+				D0726E281E623D8A003A5920 /* Views */,
 				D0C8E6B41B3E1F3B00E200A5 /* SongBar.entitlements */,
 				36491D3519F6F3330083A49D /* AppDelegate.swift */,
-				D006466F1E5FCFDB00354D07 /* MediaController.swift */,
-				D0502ACB1B757770009A90BF /* StoreSearch.swift */,
 				36491D3719F6F3330083A49D /* Images.xcassets */,
 				D0C80D731E610FA800DCF192 /* Constants.swift */,
 				36491D3919F6F3330083A49D /* MainMenu.xib */,
@@ -132,9 +133,27 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D0726E271E62373A003A5920 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D0502ACB1B757770009A90BF /* StoreSearch.swift */,
+				D006466F1E5FCFDB00354D07 /* MediaController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D0726E281E623D8A003A5920 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D0726E2F1E624098003A5920 /* MusicView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		D0C80D721E60FF6500DCF192 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				36070F9319F7761200E5B0CD /* SongBar-Bridging-Header.h */,
 				D0BEEFC11E5FBB990074EB25 /* Spotify.h */,
 				D0BEEFC21E5FBBB50074EB25 /* iTunes.h */,
 				D0C80D751E61150800DCF192 /* Radiant.h */,
@@ -259,6 +278,7 @@
 			files = (
 				D00646701E5FCFDB00354D07 /* MediaController.swift in Sources */,
 				36491D3619F6F3330083A49D /* AppDelegate.swift in Sources */,
+				D0726E301E624098003A5920 /* MusicView.swift in Sources */,
 				D0502ACC1B757770009A90BF /* StoreSearch.swift in Sources */,
 				D0C80D741E610FA800DCF192 /* Constants.swift in Sources */,
 			);

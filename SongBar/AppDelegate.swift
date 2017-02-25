@@ -34,7 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         sysBar = NSStatusBar.system().statusItem(withLength: variableStatusItemLength);
-        sysBar.menu = menu;
+        sysBar.menu = menu
         
         updateStatusBar();
         

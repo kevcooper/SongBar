@@ -31,3 +31,7 @@ public enum kServices {
     case spotify
     case radiant
 }
+
+public struct kColors {
+    static let kBackgroundColor = CGColor(red: 0.965, green: 0.965, blue: 0.965, alpha: 0.6)
+}
