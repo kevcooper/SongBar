@@ -12,7 +12,13 @@
 		36491D3819F6F3330083A49D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36491D3719F6F3330083A49D /* Images.xcassets */; };
 		36491D3B19F6F3330083A49D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36491D3919F6F3330083A49D /* MainMenu.xib */; };
 		36491D4719F6F3330083A49D /* SongBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36491D4619F6F3330083A49D /* SongBarTests.swift */; };
+		D00646701E5FCFDB00354D07 /* MediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D006466F1E5FCFDB00354D07 /* MediaController.swift */; };
+		D00646711E5FCFDB00354D07 /* MediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D006466F1E5FCFDB00354D07 /* MediaController.swift */; };
 		D0502ACC1B757770009A90BF /* StoreSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0502ACB1B757770009A90BF /* StoreSearch.swift */; };
+		D0726E241E613645003A5920 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C80D731E610FA800DCF192 /* Constants.swift */; };
+		D0726E251E61393B003A5920 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36491D3519F6F3330083A49D /* AppDelegate.swift */; };
+		D0726E261E613982003A5920 /* StoreSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0502ACB1B757770009A90BF /* StoreSearch.swift */; };
+		D0C80D741E610FA800DCF192 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C80D731E610FA800DCF192 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,9 +42,12 @@
 		36491D4019F6F3330083A49D /* SongBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SongBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36491D4519F6F3330083A49D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36491D4619F6F3330083A49D /* SongBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongBarTests.swift; sourceTree = "<group>"; };
+		D006466F1E5FCFDB00354D07 /* MediaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaController.swift; sourceTree = "<group>"; };
 		D0502ACB1B757770009A90BF /* StoreSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreSearch.swift; sourceTree = "<group>"; };
 		D0BEEFC11E5FBB990074EB25 /* Spotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spotify.h; sourceTree = "<group>"; };
 		D0BEEFC21E5FBBB50074EB25 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
+		D0C80D731E610FA800DCF192 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D0C80D751E61150800DCF192 /* Radiant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Radiant.h; sourceTree = "<group>"; };
 		D0C8E6B41B3E1F3B00E200A5 /* SongBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SongBar.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,14 +93,15 @@
 		36491D3219F6F3330083A49D /* SongBar */ = {
 			isa = PBXGroup;
 			children = (
+				D0C80D721E60FF6500DCF192 /* Headers */,
 				36070F9319F7761200E5B0CD /* SongBar-Bridging-Header.h */,
-				D0BEEFC11E5FBB990074EB25 /* Spotify.h */,
-				D0BEEFC21E5FBBB50074EB25 /* iTunes.h */,
 				D0C8E6B41B3E1F3B00E200A5 /* SongBar.entitlements */,
 				36491D3519F6F3330083A49D /* AppDelegate.swift */,
-				36491D3719F6F3330083A49D /* Images.xcassets */,
-				36491D3919F6F3330083A49D /* MainMenu.xib */,
+				D006466F1E5FCFDB00354D07 /* MediaController.swift */,
 				D0502ACB1B757770009A90BF /* StoreSearch.swift */,
+				36491D3719F6F3330083A49D /* Images.xcassets */,
+				D0C80D731E610FA800DCF192 /* Constants.swift */,
+				36491D3919F6F3330083A49D /* MainMenu.xib */,
 				36491D3319F6F3330083A49D /* Supporting Files */,
 			);
 			path = SongBar;
@@ -120,6 +130,16 @@
 				36491D4519F6F3330083A49D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D0C80D721E60FF6500DCF192 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				D0BEEFC11E5FBB990074EB25 /* Spotify.h */,
+				D0BEEFC21E5FBBB50074EB25 /* iTunes.h */,
+				D0C80D751E61150800DCF192 /* Radiant.h */,
+			);
+			name = Headers;
 			sourceTree = "<group>";
 		};
 		E6B49CA74133F3CF05D6312F /* Frameworks */ = {
@@ -237,8 +257,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D00646701E5FCFDB00354D07 /* MediaController.swift in Sources */,
 				36491D3619F6F3330083A49D /* AppDelegate.swift in Sources */,
 				D0502ACC1B757770009A90BF /* StoreSearch.swift in Sources */,
+				D0C80D741E610FA800DCF192 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0726E261E613982003A5920 /* StoreSearch.swift in Sources */,
+				D0726E251E61393B003A5920 /* AppDelegate.swift in Sources */,
+				D0726E241E613645003A5920 /* Constants.swift in Sources */,
+				D00646711E5FCFDB00354D07 /* MediaController.swift in Sources */,
 				36491D4719F6F3330083A49D /* SongBarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
