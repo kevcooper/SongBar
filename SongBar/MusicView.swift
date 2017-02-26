@@ -14,6 +14,7 @@ class MusicView: NSView {
     @IBOutlet weak var playButton: NSButton!
     @IBOutlet weak var ffbutton: NSButton!
     @IBOutlet weak var rewindbutton: NSButton!
+    var settingsWindow: SettingsWindow?
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -46,11 +47,11 @@ class MusicView: NSView {
         let mediaController:MediaController = (NSApplication.shared().delegate as! AppDelegate).mediaController
         let playbackState: kPlaybackStates = mediaController.playPauseLastService()
         if playbackState == .paused {
-            self.playButton.image = #imageLiteral(resourceName: "pause")
-            self.playButton.alternateImage = #imageLiteral(resourceName: "play")
-        } else {
             self.playButton.image = #imageLiteral(resourceName: "play")
             self.playButton.alternateImage = #imageLiteral(resourceName: "pause")
+        } else {
+            self.playButton.image = #imageLiteral(resourceName: "pause")
+            self.playButton.alternateImage = #imageLiteral(resourceName: "play")
         }
     }
 
@@ -70,5 +71,15 @@ class MusicView: NSView {
         if appDeleagate.sysBar.title != kMiscStrings.songbar && appDeleagate.sysBar.title != kMiscStrings.beats && appDeleagate.sysBar.title != nil {
             StoreSearch.search(appDeleagate.sysBar.title!)
         }
+    }
+    
+    @IBAction func displaySettings(_ sender: Any) {
+        self.settingsWindow = self.settingsWindow ?? SettingsWindow(windowNibName: kNIBNames.settingsWindow)
+        self.settingsWindow?.showWindow(self)
+        self.settingsWindow?.window?.orderFront(self)
+    }
+    
+    @IBAction func closeApplication(_ sender: Any) {
+        NSApplication.shared().terminate(self)
     }
 }

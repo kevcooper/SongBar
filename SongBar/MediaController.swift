@@ -141,6 +141,21 @@ class MediaController: NSObject {
         return playbackState
     }
     
+    func playBackStatus() -> kPlaybackStates {
+        guard let lastService: kServices = self.lastServiceUpdated
+            else {
+                return kPlaybackStates.playing
+        }
+        switch lastService {
+        case kServices.iTunes:
+            return self.iTunes?.playerState == iTunesEPlSPlaying ? kPlaybackStates.playing : kPlaybackStates.paused
+        case kServices.spotify:
+            return self.Spotify?.playerState == SpotifyEPlSPlaying ? kPlaybackStates.playing : kPlaybackStates.paused
+        case kServices.radiant:
+            return self.Radiant?.playerState == 2 ? kPlaybackStates.playing : kPlaybackStates.paused
+        }
+    }
+    
     func fastForwardLastService() {
         guard let lastService: kServices = self.lastServiceUpdated
             else{

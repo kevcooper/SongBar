@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SettingsWindow" customModule="SongBar" customModuleProvider="target">
+            <connections>
+                <outlet property="iTunesCheckBox" destination="YgI-hA-Upv" id="NDa-qc-oCa"/>
+                <outlet property="spotifyCheckBox" destination="sBW-hI-eIj" id="A5V-qZ-FxK"/>
+                <outlet property="view" destination="se5-gp-TjO" id="Bw5-pv-OzD"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="1172" y="628" width="388" height="163"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="388" height="163"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="YgI-hA-Upv">
+                        <rect key="frame" x="252" y="86" width="114" height="18"/>
+                        <buttonCell key="cell" type="check" title="Support iTunes" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9eM-YT-Eqz">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="toggleiTunesSupport:" target="-2" id="jMH-QW-zpZ"/>
+                        </connections>
+                    </button>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="sBW-hI-eIj">
+                        <rect key="frame" x="252" y="66" width="118" height="18"/>
+                        <buttonCell key="cell" type="check" title="Support Spotify" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Yfe-DP-iAd">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="toggleSpotifySupport:" target="-2" id="5Ff-kx-Y1h"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hnn-Ue-5Uo">
+                        <rect key="frame" x="122" y="121" width="145" height="22"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="SongBar Settings" id="l8k-cm-tfA">
+                            <font key="font" metaFont="system" size="18"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="od5-y4-mtF">
+                        <rect key="frame" x="299" y="13" width="75" height="32"/>
+                        <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k95-ZZ-qnL">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="performClose:" target="F0z-JX-Cv5" id="75E-M1-aPv"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="YgI-hA-Upv" firstAttribute="top" secondItem="Hnn-Ue-5Uo" secondAttribute="bottom" constant="19" id="C8W-lm-3JP"/>
+                    <constraint firstItem="sBW-hI-eIj" firstAttribute="top" secondItem="YgI-hA-Upv" secondAttribute="bottom" constant="6" id="Ogb-IA-Gs7"/>
+                    <constraint firstAttribute="trailing" secondItem="od5-y4-mtF" secondAttribute="trailing" constant="20" id="Uuk-xg-hoT"/>
+                    <constraint firstItem="Hnn-Ue-5Uo" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="ksT-2X-gqB"/>
+                    <constraint firstAttribute="bottom" secondItem="od5-y4-mtF" secondAttribute="bottom" constant="20" id="o3t-fj-39u"/>
+                    <constraint firstItem="Hnn-Ue-5Uo" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="ri1-wB-5kD"/>
+                    <constraint firstItem="sBW-hI-eIj" firstAttribute="leading" secondItem="YgI-hA-Upv" secondAttribute="leading" id="v3O-gq-aBM"/>
+                    <constraint firstAttribute="trailing" secondItem="sBW-hI-eIj" secondAttribute="trailing" constant="20" id="yHS-PL-Qv4"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="85" y="108.5"/>
+        </window>
+    </objects>
+</document>

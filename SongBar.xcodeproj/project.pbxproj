@@ -12,6 +12,8 @@
 		36491D3819F6F3330083A49D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36491D3719F6F3330083A49D /* Images.xcassets */; };
 		36491D3B19F6F3330083A49D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36491D3919F6F3330083A49D /* MainMenu.xib */; };
 		36491D4719F6F3330083A49D /* SongBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36491D4619F6F3330083A49D /* SongBarTests.swift */; };
+		D0050CB51E6388CA000B2DAF /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0050CB31E6388CA000B2DAF /* SettingsWindow.swift */; };
+		D0050CB61E6388CA000B2DAF /* SettingsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0050CB41E6388CA000B2DAF /* SettingsWindow.xib */; };
 		D00646701E5FCFDB00354D07 /* MediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D006466F1E5FCFDB00354D07 /* MediaController.swift */; };
 		D00646711E5FCFDB00354D07 /* MediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D006466F1E5FCFDB00354D07 /* MediaController.swift */; };
 		D0502ACC1B757770009A90BF /* StoreSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0502ACB1B757770009A90BF /* StoreSearch.swift */; };
@@ -46,6 +48,8 @@
 		36491D4019F6F3330083A49D /* SongBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SongBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36491D4519F6F3330083A49D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36491D4619F6F3330083A49D /* SongBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongBarTests.swift; sourceTree = "<group>"; };
+		D0050CB31E6388CA000B2DAF /* SettingsWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
+		D0050CB41E6388CA000B2DAF /* SettingsWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsWindow.xib; sourceTree = "<group>"; };
 		D006466F1E5FCFDB00354D07 /* MediaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaController.swift; sourceTree = "<group>"; };
 		D0502ACB1B757770009A90BF /* StoreSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreSearch.swift; sourceTree = "<group>"; };
 		D06F05751E62A9E40085800C /* MusicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicView.xib; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 				D0726E2F1E624098003A5920 /* MusicView.swift */,
 				D06F05751E62A9E40085800C /* MusicView.xib */,
 				D0726E311E624743003A5920 /* ViewMenuItem.swift */,
+				D0050CB31E6388CA000B2DAF /* SettingsWindow.swift */,
+				D0050CB41E6388CA000B2DAF /* SettingsWindow.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -266,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0050CB61E6388CA000B2DAF /* SettingsWindow.xib in Resources */,
 				36491D3819F6F3330083A49D /* Images.xcassets in Resources */,
 				36491D3B19F6F3330083A49D /* MainMenu.xib in Resources */,
 				D06F05761E62A9E40085800C /* MusicView.xib in Resources */,
@@ -286,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0050CB51E6388CA000B2DAF /* SettingsWindow.swift in Sources */,
 				D00646701E5FCFDB00354D07 /* MediaController.swift in Sources */,
 				36491D3619F6F3330083A49D /* AppDelegate.swift in Sources */,
 				D0726E301E624098003A5920 /* MusicView.swift in Sources */,

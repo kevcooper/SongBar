@@ -14,8 +14,9 @@ import AppKit
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var menu: NSMenu!
-    let mediaController: MediaController = MediaController()
+    var mediaController: MediaController = MediaController()
     var sysBar: NSStatusItem!
+    
     //magic number
     let variableStatusItemLength: CGFloat = -1;
     
@@ -38,20 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         DistributedNotificationCenter.default().removeObserver(self);
     }
     
-    
-    
-//    @IBAction func playPause(_ sender: AnyObject) {
-//        if lastServiceUsed == Service.iTunes{
-//            iTunes.playpause();
-//        } else {
-//            Spotify!.playpause()
-//        }
-//    }
 
-//    @IBAction func findInStore(_ sender: AnyObject) {
-//        let searchString: NSString = sysBar.title! as NSString
-//        StoreSearch.search(searchString)
-//    }
  
 
 }

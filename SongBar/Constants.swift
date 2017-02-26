@@ -31,6 +31,12 @@ struct kURLs {
     static let baseURL = "https://itunes.apple.com/search?term="
 }
 
+struct kNIBNames {
+    static let musicView = "MusicView"
+    static let mainMenu = "MainMenu"
+    static let settingsWindow = "SettingsWindow"
+}
+
 struct kColors {
     static let kBackgroundColor = CGColor(red: 0.965, green: 0.965, blue: 0.965, alpha: 0.020)
 }
