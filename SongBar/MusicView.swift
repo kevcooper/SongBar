@@ -11,6 +11,9 @@ import Cocoa
 class MusicView: NSView {
 
     @IBOutlet var view: MusicView!
+    @IBOutlet weak var playButton: NSButton!
+    @IBOutlet weak var ffbutton: NSButton!
+    @IBOutlet weak var rewindbutton: NSButton!
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -40,13 +43,26 @@ class MusicView: NSView {
     
     
     @IBAction func playClicked(_ sender: Any) {
+        let mediaController:MediaController = (NSApplication.shared().delegate as! AppDelegate).mediaController
+        let playbackState: kPlaybackStates = mediaController.playPauseLastService()
+        if playbackState == .paused {
+            self.playButton.image = #imageLiteral(resourceName: "pause")
+            self.playButton.alternateImage = #imageLiteral(resourceName: "play")
+        } else {
+            self.playButton.image = #imageLiteral(resourceName: "play")
+            self.playButton.alternateImage = #imageLiteral(resourceName: "pause")
+        }
     }
 
     
     @IBAction func ffClicked(_ sender: Any) {
+        let mediaController:MediaController = (NSApplication.shared().delegate as! AppDelegate).mediaController
+        mediaController.fastForwardLastService()
     }
     
     @IBAction func rewindClicked(_ sender: Any) {
+        let mediaController:MediaController = (NSApplication.shared().delegate as! AppDelegate).mediaController
+        mediaController.rewindLastService()
     }
     
 }

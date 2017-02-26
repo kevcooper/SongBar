@@ -104,6 +104,77 @@ class MediaController: NSObject {
             sysBar?.updateStatusBar(itemTitle: title)
         }
     }
+    
+    func playPauseLastService() -> kPlaybackStates {
+        var playbackState: kPlaybackStates
+        guard let lastService: kServices = self.lastServiceUpdated
+            else {
+                return kPlaybackStates.paused
+        }
+        
+        switch lastService {
+        case kServices.iTunes:
+            if self.iTunes?.playerState == iTunesEPlSPlaying{
+                playbackState = kPlaybackStates.paused
+            } else {
+                playbackState = kPlaybackStates.playing
+            }
+            self.iTunes?.playpause()
+            break
+        case kServices.spotify:
+            if self.Spotify?.playerState == SpotifyEPlSPlaying {
+                playbackState = kPlaybackStates.paused
+            } else {
+                playbackState = kPlaybackStates.playing
+            }
+            self.Spotify?.playpause()
+            break
+        case kServices.radiant:
+            if self.Radiant?.playerState == 2 {
+                playbackState = kPlaybackStates.paused
+            } else {
+                playbackState = kPlaybackStates.playing
+            }
+            self.Radiant?.playpause()
+            break
+        }
+        return playbackState
+    }
+    
+    func fastForwardLastService() {
+        guard let lastService: kServices = self.lastServiceUpdated
+            else{
+                return
+        }
+        switch lastService {
+        case kServices.iTunes:
+            self.iTunes?.nextTrack()
+            break
+        case kServices.spotify:
+            self.Spotify?.nextTrack()
+            break
+        case kServices.radiant:
+            self.Radiant?.nextTrack()
+            break
+        }
+    }
 
+    func rewindLastService() {
+        guard let lastService: kServices = self.lastServiceUpdated
+            else{
+                return
+        }
+        switch lastService {
+        case kServices.iTunes:
+            self.iTunes?.previousTrack()
+            break
+        case kServices.spotify:
+            self.Spotify?.previousTrack()
+            break
+        case kServices.radiant:
+            self.Radiant?.previousTrack()
+            break
+        }
+    }
 }
 
