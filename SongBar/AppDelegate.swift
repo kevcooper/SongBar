@@ -30,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         sysBar = NSStatusBar.system().statusItem(withLength: variableStatusItemLength);
         sysBar.menu = menu
-        sysBar.updateStatusBar(itemTitle: "SongBar")
+        sysBar.updateStatusBar(itemTitle: kMiscStrings.songbar)
         
     }
     

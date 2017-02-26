@@ -58,12 +58,28 @@
                         <action selector="rewindClicked:" target="n3t-0i-vrh" id="gNA-E1-kqS"/>
                     </connections>
                 </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="Kzr-2S-g6h">
+                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="FvU-CY-9mF"/>
+                        <constraint firstAttribute="height" constant="25" id="Yfn-Ks-8Eu"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="download" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="ZZy-px-y6Z">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="downloadFromITS:" target="n3t-0i-vrh" id="C8d-4g-Sn2"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="3wh-pU-Nc6" firstAttribute="centerY" secondItem="X4y-B1-3N1" secondAttribute="centerY" id="26K-C9-0oR"/>
                 <constraint firstItem="pF7-9K-NhP" firstAttribute="centerY" secondItem="X4y-B1-3N1" secondAttribute="centerY" id="Ta6-Y1-2m0"/>
+                <constraint firstItem="Kzr-2S-g6h" firstAttribute="leading" secondItem="n3t-0i-vrh" secondAttribute="leading" id="eQr-qP-DdN"/>
                 <constraint firstItem="X4y-B1-3N1" firstAttribute="centerY" secondItem="n3t-0i-vrh" secondAttribute="centerY" id="jyK-1a-2Wi"/>
                 <constraint firstItem="X4y-B1-3N1" firstAttribute="leading" secondItem="pF7-9K-NhP" secondAttribute="trailing" constant="26" id="oTz-NS-JJ7"/>
+                <constraint firstAttribute="bottom" secondItem="Kzr-2S-g6h" secondAttribute="bottom" id="rPB-gq-Fdz"/>
                 <constraint firstItem="X4y-B1-3N1" firstAttribute="centerX" secondItem="n3t-0i-vrh" secondAttribute="centerX" id="vGr-8w-sPp"/>
                 <constraint firstItem="3wh-pU-Nc6" firstAttribute="leading" secondItem="X4y-B1-3N1" secondAttribute="trailing" constant="28" id="xqG-Cx-Vrd"/>
             </constraints>
@@ -72,13 +88,14 @@
                 <outlet property="playButton" destination="X4y-B1-3N1" id="sWy-gx-1bd"/>
                 <outlet property="rewindbutton" destination="pF7-9K-NhP" id="aFz-gY-dfv"/>
             </connections>
-            <point key="canvasLocation" x="-72" y="-83"/>
+            <point key="canvasLocation" x="-71" y="-107"/>
         </customView>
     </objects>
     <resources>
-        <image name="fastforward" width="155" height="155"/>
-        <image name="pause" width="200" height="200"/>
-        <image name="play" width="200" height="200"/>
-        <image name="rewind" width="155" height="155"/>
+        <image name="download" width="20" height="29"/>
+        <image name="fastforward" width="78" height="78"/>
+        <image name="pause" width="100" height="100"/>
+        <image name="play" width="100" height="100"/>
+        <image name="rewind" width="78" height="78"/>
     </resources>
 </document>

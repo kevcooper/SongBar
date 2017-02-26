@@ -8,35 +8,45 @@
 
 import Foundation
 
-public struct kNotificationNames {
+struct kNotificationNames {
     static let iTunesNotification = "com.apple.iTunes.playerInfo"
     static let spotifyNotification = "com.spotify.client.PlaybackStateChanged"
     static let radiantNotification = "com.sajidanwar.Radiant-Player.PlaybackStateChange"
 }
 
-public struct kUserDefaults {
+struct kUserDefaults {
     static let supportiTunes = "supportiTunes"
     static let supportSpotify = "supportSpotify"
     static let supportRadiant = "supportRadiant"
     static let isInitalized = "initalized"
 }
 
-public struct kBundelIdentifiers {
+struct kBundelIdentifiers {
     static let iTunes = "com.apple.iTunes"
     static let spotify = "com.spotify.client"
     static let radiant = "com.sajidanwar.Radiant-Player"
 }
-public enum kServices {
+
+struct kURLs {
+    static let baseURL = "https://itunes.apple.com/search?term="
+}
+
+struct kColors {
+    static let kBackgroundColor = CGColor(red: 0.965, green: 0.965, blue: 0.965, alpha: 0.020)
+}
+
+struct kMiscStrings {
+    static let songbar = "SongBar"
+    static let beats = "Beats 1"
+}
+
+enum kServices {
     case iTunes
     case spotify
     case radiant
 }
 
-public struct kColors {
-    static let kBackgroundColor = CGColor(red: 0.965, green: 0.965, blue: 0.965, alpha: 0.020)
-}
-
-public enum kPlaybackStates {
+enum kPlaybackStates {
     case playing
     case paused
 }

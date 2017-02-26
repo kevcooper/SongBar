@@ -10,9 +10,8 @@ import Cocoa
 
 class StoreSearch: NSObject {
     
-    class func search(_ terms: NSString){
-        let baseURLString: String = "https://itunes.apple.com/search?term="
-        var fullURL =  "\(baseURLString) \(terms)".replacingOccurrences(of: "-", with: "")
+    class func search(_ terms: String){
+        var fullURL =  "\(kURLs.baseURL) \(terms)".replacingOccurrences(of: "-", with: "")
         fullURL = fullURL.replacingOccurrences(of: " ", with: "+")
         fullURL = fullURL.replacingOccurrences(of: "++", with: "+")
         
@@ -20,12 +19,18 @@ class StoreSearch: NSObject {
         let session = URLSession.shared
         
         let task = session.dataTask(with: request, completionHandler: { (data, responce, error) -> Void in
+            if error != nil {
+                print("\(error!)")
+                return
+            }
             let result: NSDictionary?
+
             do {
-                result = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves) as? NSDictionary
+                let jsonObject = try data ?? JSONSerialization.data(withJSONObject: ["results" : []], options: JSONSerialization.WritingOptions.prettyPrinted)
+                result = try JSONSerialization.jsonObject(with: jsonObject, options: JSONSerialization.ReadingOptions.mutableLeaves) as? NSDictionary
                 
             } catch {
-                print("Failed to convert json data to NSDictonary")
+                print("\(error)")
                 return
             }
             guard let songArray: NSArray = result?["results"] as? NSArray
@@ -37,10 +42,9 @@ class StoreSearch: NSObject {
             if songArray.count > 0 {
                 DispatchQueue.main.async(execute: { () -> Void in
                     let songDictionary: NSDictionary = songArray[0] as! NSDictionary
-                    var songURL: NSString = songDictionary["trackViewUrl"] as! NSString
-                    songURL =  songURL.replacingOccurrences(of: "https://", with: "itms://") as NSString
-                    print("\(songURL)")
-                    NSWorkspace.shared().open(URL(string: "\(songURL)&app=itunes" as String)!)
+                    var songURL: String = songDictionary["trackViewUrl"] as! String
+                    songURL =  songURL.replacingOccurrences(of: "https://", with: "itms://")
+                    NSWorkspace.shared().open(URL(string: "\(songURL)&app=itunes")!)
                 })
             }
         })

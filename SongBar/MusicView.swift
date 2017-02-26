@@ -65,4 +65,10 @@ class MusicView: NSView {
         mediaController.rewindLastService()
     }
     
+    @IBAction func downloadFromITS(_ sender: Any) {
+        let appDeleagate: AppDelegate = (NSApplication.shared().delegate as! AppDelegate)
+        if appDeleagate.sysBar.title != kMiscStrings.songbar && appDeleagate.sysBar.title != kMiscStrings.beats && appDeleagate.sysBar.title != nil {
+            StoreSearch.search(appDeleagate.sysBar.title!)
+        }
+    }
 }

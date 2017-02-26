@@ -37,12 +37,12 @@ class MediaController: NSObject {
                                                                 object: nil)
         }
         
-        iTunes = SBApplication(bundleIdentifier:"com.apple.iTunes")!
-        if let spotify = SBApplication(bundleIdentifier: "com.spotify.client")
+        iTunes = SBApplication(bundleIdentifier:kBundelIdentifiers.iTunes)!
+        if let spotify = SBApplication(bundleIdentifier: kBundelIdentifiers.spotify)
         {
             self.Spotify = spotify
         }
-        if let radiant = SBApplication(bundleIdentifier: "com.sajidanwar.Radiant-Player") {
+        if let radiant = SBApplication(bundleIdentifier: kBundelIdentifiers.radiant) {
             self.Radiant = radiant
         }
     }
@@ -83,7 +83,7 @@ class MediaController: NSObject {
             if let _: String = userInfo["title"] as? String {
                 title = userInfo["title"] as! String
             } else {
-                  sysBar?.updateStatusBar(itemTitle: "SongBar")
+                  sysBar?.updateStatusBar(itemTitle: kMiscStrings.songbar)
                 return
                 }
             }
