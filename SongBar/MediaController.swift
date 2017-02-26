@@ -47,9 +47,10 @@ class MediaController: NSObject {
         }
     }
     
-    func updateTitleFromNotification(_ aNotification: Notification) -> String {
+    func updateTitleFromNotification(_ aNotification: Notification) {
         let sender: String = aNotification.name.rawValue
         let userInfo: [String : AnyObject] = aNotification.userInfo as! [String : AnyObject]
+        let sysBar = (NSApplication.shared().delegate as! AppDelegate).sysBar
         
         switch sender {
         case kNotificationNames.iTunesNotification:
@@ -82,7 +83,8 @@ class MediaController: NSObject {
             if let _: String = userInfo["title"] as? String {
                 title = userInfo["title"] as! String
             } else {
-                  return "SongBar"
+                  sysBar?.updateStatusBar(itemTitle: "SongBar")
+                return
                 }
             }
         
@@ -97,9 +99,9 @@ class MediaController: NSObject {
             }
         
         if artist != nil {
-            return "\(title) - \(artist)"
+            sysBar?.updateStatusBar(itemTitle: "\(title) - \(artist!)")
         } else {
-            return title
+            sysBar?.updateStatusBar(itemTitle: title)
         }
     }
 
