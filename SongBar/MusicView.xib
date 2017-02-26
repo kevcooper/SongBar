@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="MusicView" customModule="SongBar" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="n3t-0i-vrh" id="5Eo-MB-OO8"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView focusRingType="none" id="n3t-0i-vrh" customClass="MusicView" customModule="SongBar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="X4y-B1-3N1">
+                    <rect key="frame" x="123" y="11" width="75" height="75"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="75" id="22l-cz-uHc"/>
+                        <constraint firstAttribute="width" constant="75" id="sZC-7Z-nD7"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="play" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="AMy-EX-7be">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="playClicked:" target="n3t-0i-vrh" id="B5c-SZ-xj8"/>
+                    </connections>
+                </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="3wh-pU-Nc6">
+                    <rect key="frame" x="226" y="20" width="56" height="56"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="56" id="5up-Cl-2iA"/>
+                        <constraint firstAttribute="height" constant="56" id="buW-c6-8lf"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="fastforward" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="wqN-JI-FfE">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="ffClicked:" target="n3t-0i-vrh" id="Pw0-U1-Njo"/>
+                    </connections>
+                </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="pF7-9K-NhP">
+                    <rect key="frame" x="41" y="20" width="56" height="56"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="Oco-Eo-rlC"/>
+                        <constraint firstAttribute="width" constant="56" id="fYN-wv-3yg"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="rewind" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="eyR-zj-qAK">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="rewindClicked:" target="n3t-0i-vrh" id="gNA-E1-kqS"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="3wh-pU-Nc6" firstAttribute="centerY" secondItem="X4y-B1-3N1" secondAttribute="centerY" id="26K-C9-0oR"/>
+                <constraint firstItem="pF7-9K-NhP" firstAttribute="centerY" secondItem="X4y-B1-3N1" secondAttribute="centerY" id="Ta6-Y1-2m0"/>
+                <constraint firstItem="X4y-B1-3N1" firstAttribute="centerY" secondItem="n3t-0i-vrh" secondAttribute="centerY" id="jyK-1a-2Wi"/>
+                <constraint firstItem="X4y-B1-3N1" firstAttribute="leading" secondItem="pF7-9K-NhP" secondAttribute="trailing" constant="26" id="oTz-NS-JJ7"/>
+                <constraint firstItem="X4y-B1-3N1" firstAttribute="centerX" secondItem="n3t-0i-vrh" secondAttribute="centerX" id="vGr-8w-sPp"/>
+                <constraint firstItem="3wh-pU-Nc6" firstAttribute="leading" secondItem="X4y-B1-3N1" secondAttribute="trailing" constant="28" id="xqG-Cx-Vrd"/>
+            </constraints>
+            <point key="canvasLocation" x="-72" y="-83"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="fastforward" width="155" height="155"/>
+        <image name="play" width="200" height="200"/>
+        <image name="rewind" width="155" height="155"/>
+    </resources>
+</document>

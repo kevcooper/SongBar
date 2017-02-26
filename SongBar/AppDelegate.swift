@@ -15,14 +15,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var menu: NSMenu!
-    
     let mediaController: MediaController = MediaController()
-    
     var sysBar: NSStatusItem!
-    
-    
     //magic number
-    var variableStatusItemLength: CGFloat = -1;
+    let variableStatusItemLength: CGFloat = -1;
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if UserDefaults.standard.bool(forKey: kUserDefaults.isInitalized) == false {

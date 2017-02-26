@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -15,7 +14,6 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="SongBar" customModuleProvider="target">
             <connections>
                 <outlet property="menu" destination="La1-uj-7QE" id="6NI-bo-v3x"/>
-                <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -668,40 +666,14 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="SongBar" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-            <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </view>
-        </window>
         <menu id="La1-uj-7QE">
             <items>
-                <menuItem hidden="YES" id="g3d-cG-Vja">
+                <menuItem enabled="NO" id="g3d-cG-Vja" customClass="ViewMenuItem" customModule="SongBar" customModuleProvider="target">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Quit" id="mte-z0-mG2">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="terminate:" target="-1" id="WJY-gN-JVG"/>
-                    </connections>
                 </menuItem>
             </items>
             <point key="canvasLocation" x="-97" y="359"/>
         </menu>
-        <customView focusRingType="none" id="5Wm-m9-dof" customClass="MusicView" customModule="SongBar" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <point key="canvasLocation" x="257" y="290"/>
-        </customView>
-        <customView id="RvE-Cl-T70" customClass="MusicView" customModule="SongBar" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <point key="canvasLocation" x="306" y="444"/>
-        </customView>
         <menuItem title="Item" id="Qcf-fx-NbL">
             <modifierMask key="keyEquivalentModifierMask"/>
         </menuItem>
