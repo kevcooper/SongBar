@@ -44,7 +44,7 @@ class MusicView: NSView {
     
     
     @IBAction func playClicked(_ sender: Any) {
-        let mediaController:MediaController = (NSApplication.shared().delegate as! AppDelegate).mediaController
+        let mediaController:MediaController = (NSApplication.shared().delegate as! AppDelegate).mediaController ?? MediaController()
         let playbackState: kPlaybackStates = mediaController.playPauseLastService()
         if playbackState == .paused {
             self.playButton.image = #imageLiteral(resourceName: "play")
@@ -57,12 +57,12 @@ class MusicView: NSView {
 
     
     @IBAction func ffClicked(_ sender: Any) {
-        let mediaController:MediaController = (NSApplication.shared().delegate as! AppDelegate).mediaController
+        let mediaController:MediaController = (NSApplication.shared().delegate as! AppDelegate).mediaController ?? MediaController()
         mediaController.fastForwardLastService()
     }
     
     @IBAction func rewindClicked(_ sender: Any) {
-        let mediaController:MediaController = (NSApplication.shared().delegate as! AppDelegate).mediaController
+        let mediaController:MediaController = (NSApplication.shared().delegate as! AppDelegate).mediaController ?? MediaController()
         mediaController.rewindLastService()
     }
     

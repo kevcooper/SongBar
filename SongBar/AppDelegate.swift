@@ -14,7 +14,7 @@ import AppKit
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var menu: NSMenu!
-    var mediaController: MediaController = MediaController()
+    var mediaController: MediaController?
     var sysBar: NSStatusItem!
     
     //magic number
@@ -28,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             UserDefaults.standard.set(true, forKey: kUserDefaults.isInitalized)
             UserDefaults.standard.synchronize()
         }
-        
+        self.mediaController = MediaController()
         sysBar = NSStatusBar.system().statusItem(withLength: variableStatusItemLength);
         sysBar.menu = menu
         sysBar.updateStatusBar(itemTitle: kMiscStrings.songbar)
