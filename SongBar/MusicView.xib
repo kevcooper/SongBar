@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -126,10 +126,10 @@
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSStopProgressTemplate" width="11" height="11"/>
-        <image name="download" width="20" height="29"/>
-        <image name="fastforward" width="78" height="78"/>
-        <image name="pause" width="100" height="100"/>
-        <image name="play" width="100" height="100"/>
-        <image name="rewind" width="78" height="78"/>
+        <image name="download" width="39" height="57"/>
+        <image name="fastforward" width="155" height="155"/>
+        <image name="pause" width="200" height="200"/>
+        <image name="play" width="200" height="200"/>
+        <image name="rewind" width="155" height="155"/>
     </resources>
 </document>

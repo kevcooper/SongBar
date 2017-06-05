@@ -12,11 +12,10 @@ class ViewMenuItem: NSMenuItem {
     
     required init(coder decoder: NSCoder) {
         super.init(coder: decoder)
-        self.view?.wantsLayer = true
-        
+        view?.wantsLayer = true
         let frame: NSRect = NSRect(x: 0, y: 0, width: 320.0, height: 95.0)
         
         let musicView = MusicView(frame: frame)
-        self.view = musicView
+        view = musicView
     }
 }

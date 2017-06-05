@@ -12,7 +12,6 @@ import ScriptingBridge
 class MediaController: NSObject {
     var iTunes: AnyObject?
     var Spotify: AnyObject?
-    var Radiant: AnyObject?
     
     var lastServiceUpdated: kServices?
     
@@ -30,20 +29,11 @@ class MediaController: NSObject {
                                                                 name: NSNotification.Name(rawValue: kNotificationNames.spotifyNotification),
                                                                 object: nil)
         }
-        if UserDefaults.standard.bool(forKey: kUserDefaults.supportRadiant) {
-            DistributedNotificationCenter.default().addObserver(self,
-                                                                selector: #selector(self.updateTitleFromNotification(_:)),
-                                                                name: NSNotification.Name(rawValue: kNotificationNames.radiantNotification),
-                                                                object: nil)
-        }
         
         iTunes = SBApplication(bundleIdentifier:kBundelIdentifiers.iTunes)!
         if let spotify = SBApplication(bundleIdentifier: kBundelIdentifiers.spotify)
         {
             self.Spotify = spotify
-        }
-        if let radiant = SBApplication(bundleIdentifier: kBundelIdentifiers.radiant) {
-            self.Radiant = radiant
         }
     }
     
@@ -63,12 +53,6 @@ class MediaController: NSObject {
             self.lastServiceUpdated = kServices.spotify
             if self.Spotify == nil {
                 self.Spotify = SBApplication(bundleIdentifier: kBundelIdentifiers.spotify)
-            }
-            break
-        case kNotificationNames.radiantNotification:
-            self.lastServiceUpdated = kServices.radiant
-            if self.Radiant == nil {
-                self.Radiant = SBApplication(bundleIdentifier: kBundelIdentifiers.radiant)
             }
             break
         default:
@@ -97,12 +81,16 @@ class MediaController: NSObject {
                   artist = nil
               }
             }
-        
-        if artist != nil {
-            sysBar?.updateStatusBar(itemTitle: "\(title) - \(artist!)")
-        } else {
-            sysBar?.updateStatusBar(itemTitle: title)
+        let fullTrackText: String = artist != nil ? "\(title) - \(artist!)" : title
+        sysBar?.updateStatusBar(itemTitle: <#T##String#>)
+    }
+    
+    func maxLengthString(fullString: String)-> String {
+        var charTuncate: Int = 0
+        while fullString.size(withAttributes: nil).width > musicWidth {
+            charTuncate ++
         }
+        //TODO: Remove number of characters from the middle and replace with elipses
     }
     
     func playPauseLastService() -> kPlaybackStates {
@@ -129,14 +117,6 @@ class MediaController: NSObject {
             }
             self.Spotify?.playpause()
             break
-        case kServices.radiant:
-            if self.Radiant?.playerState == 2 {
-                playbackState = kPlaybackStates.paused
-            } else {
-                playbackState = kPlaybackStates.playing
-            }
-            self.Radiant?.playpause()
-            break
         }
         return playbackState
     }
@@ -151,8 +131,6 @@ class MediaController: NSObject {
             return self.iTunes?.playerState == iTunesEPlSPlaying ? kPlaybackStates.playing : kPlaybackStates.paused
         case kServices.spotify:
             return self.Spotify?.playerState == SpotifyEPlSPlaying ? kPlaybackStates.playing : kPlaybackStates.paused
-        case kServices.radiant:
-            return self.Radiant?.playerState == 2 ? kPlaybackStates.playing : kPlaybackStates.paused
         }
     }
     
@@ -168,9 +146,6 @@ class MediaController: NSObject {
         case kServices.spotify:
             self.Spotify?.nextTrack()
             break
-        case kServices.radiant:
-            self.Radiant?.nextTrack()
-            break
         }
     }
 
@@ -185,9 +160,6 @@ class MediaController: NSObject {
             break
         case kServices.spotify:
             self.Spotify?.previousTrack()
-            break
-        case kServices.radiant:
-            self.Radiant?.previousTrack()
             break
         }
     }

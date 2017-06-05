@@ -8,48 +8,44 @@
 
 import Foundation
 
-struct kNotificationNames {
-    static let iTunesNotification = "com.apple.iTunes.playerInfo"
-    static let spotifyNotification = "com.spotify.client.PlaybackStateChanged"
-    static let radiantNotification = "com.sajidanwar.Radiant-Player.PlaybackStateChange"
-}
+//App IDs
+let iTunesNotification = "com.apple.iTunes.playerInfo"
+let spotifyNotification = "com.spotify.client.PlaybackStateChanged"
 
+//Default Keys
 struct kUserDefaults {
     static let supportiTunes = "supportiTunes"
     static let supportSpotify = "supportSpotify"
-    static let supportRadiant = "supportRadiant"
     static let isInitalized = "initalized"
 }
 
-struct kBundelIdentifiers {
-    static let iTunes = "com.apple.iTunes"
-    static let spotify = "com.spotify.client"
-    static let radiant = "com.sajidanwar.Radiant-Player"
-}
+//Bundel IDs
+let iTunes = "com.apple.iTunes"
+let spotify = "com.spotify.client"
 
-struct kURLs {
-    static let baseURL = "https://itunes.apple.com/search?term="
-}
+//URL strings
+let baseURL = "https://itunes.apple.com/search?term="
 
-struct kNIBNames {
-    static let musicView = "MusicView"
-    static let mainMenu = "MainMenu"
-    static let settingsWindow = "SettingsWindow"
-}
 
-struct kColors {
-    static let kBackgroundColor = CGColor(red: 0.965, green: 0.965, blue: 0.965, alpha: 0.020)
-}
+//Storyboard names
+let musicView = "MusicView"
+let mainMenu = "MainMenu"
+let settingsWindow = "SettingsWindow"
 
-struct kMiscStrings {
-    static let songbar = "SongBar"
-    static let beats = "Beats 1"
-}
+//Colors
+let kBackgroundColor = CGColor(red: 0.965, green: 0.965, blue: 0.965, alpha: 0.020)
+
+//Mesurements
+let musicWidth: CGFloat = 320.0
+let musicHeight: CGFloat = 96.0
+
+//Misc
+let songbar = "SongBar"
+let beats = "Beats 1"
 
 enum kServices {
     case iTunes
     case spotify
-    case radiant
 }
 
 enum kPlaybackStates {
