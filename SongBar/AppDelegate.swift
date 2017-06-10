@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var sysBar: NSStatusItem!
     
     //magic number
-    let variableStatusItemLength: CGFloat = -1;
+    let variableStatusItemLength: CGFloat = -1
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if UserDefaults.standard.bool(forKey: kUserDefaults.isInitalized) == false {

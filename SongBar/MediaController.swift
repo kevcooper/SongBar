@@ -82,15 +82,29 @@ class MediaController: NSObject {
               }
             }
         let fullTrackText: String = artist != nil ? "\(title) - \(artist!)" : title
-        sysBar?.updateStatusBar(itemTitle: <#T##String#>)
+        sysBar?.updateStatusBar(itemTitle: maxLengthString(fullString: fullTrackText))
     }
     
     func maxLengthString(fullString: String)-> String {
-        var charTuncate: Int = 0
-        while fullString.size(withAttributes: nil).width > musicWidth {
-            charTuncate ++
+        let middleCharIndex = fullString.index(fullString.startIndex, offsetBy: fullString.characters.count / 2)
+        var firstHalf: String = fullString.substring(to: middleCharIndex)
+        var lastHalf: String = fullString.substring(from: middleCharIndex)
+        
+        while stringWidthWithFont(string: "\(firstHalf)\(lastHalf)" as NSString, font: nil)  > musicWidth {
+            firstHalf.characters = firstHalf.characters.dropLast(1)
+            lastHalf.characters = lastHalf.characters.dropFirst(1)
         }
-        //TODO: Remove number of characters from the middle and replace with elipses
+
+        return fullString == "\(firstHalf)\(lastHalf)" ? fullString : "\(firstHalf)...\(lastHalf)" 
+        
+    }
+    
+    func stringWidthWithFont(string: NSString, font: NSFont?)-> CGFloat {
+        let boundingSize: NSSize = NSSize(width: .greatestFiniteMagnitude, height: musicHeight)
+        let labelSize: NSRect = string.boundingRect(with: boundingSize,
+                                                    options: .usesLineFragmentOrigin,
+                                                    attributes: [NSFontAttributeName : font ?? NSFont.systemFont(ofSize: 14)])
+        return labelSize.width
     }
     
     func playPauseLastService() -> kPlaybackStates {
