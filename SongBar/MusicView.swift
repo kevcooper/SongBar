@@ -32,7 +32,7 @@ class MusicView: NSView {
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         
-        Bundle.main.loadNibNamed("MusicView", owner: self, topLevelObjects: nil)
+        Bundle.main.loadNibNamed(NSNib.Name(rawValue: "MusicView"), owner: self, topLevelObjects: nil)
         self.view.frame = NSRect(x: 0, y: 0, width: frame.width, height: frame.height)
         
         self.wantsLayer = true
@@ -44,7 +44,7 @@ class MusicView: NSView {
     
     
     @IBAction func playClicked(_ sender: Any) {
-        let mediaController:MediaController = (NSApplication.shared().delegate as! AppDelegate).mediaController ?? MediaController()
+        let mediaController:MediaController = (NSApplication.shared.delegate as! AppDelegate).mediaController ?? MediaController()
         let playbackState: kPlaybackStates = mediaController.playPauseLastService()
         if playbackState == .paused {
             self.playButton.image = #imageLiteral(resourceName: "play")
@@ -57,29 +57,29 @@ class MusicView: NSView {
 
     
     @IBAction func ffClicked(_ sender: Any) {
-        let mediaController:MediaController = (NSApplication.shared().delegate as! AppDelegate).mediaController ?? MediaController()
+        let mediaController:MediaController = (NSApplication.shared.delegate as! AppDelegate).mediaController ?? MediaController()
         mediaController.fastForwardLastService()
     }
     
     @IBAction func rewindClicked(_ sender: Any) {
-        let mediaController:MediaController = (NSApplication.shared().delegate as! AppDelegate).mediaController ?? MediaController()
+        let mediaController:MediaController = (NSApplication.shared.delegate as! AppDelegate).mediaController ?? MediaController()
         mediaController.rewindLastService()
     }
     
     @IBAction func downloadFromITS(_ sender: Any) {
-        let appDeleagate: AppDelegate = (NSApplication.shared().delegate as! AppDelegate)
+        let appDeleagate: AppDelegate = (NSApplication.shared.delegate as! AppDelegate)
         if appDeleagate.sysBar.title != kMiscStrings.songbar && appDeleagate.sysBar.title != kMiscStrings.beats && appDeleagate.sysBar.title != nil {
             StoreSearch.search(appDeleagate.sysBar.title!)
         }
     }
     
     @IBAction func displaySettings(_ sender: Any) {
-        self.settingsWindow = self.settingsWindow ?? SettingsWindow(windowNibName: kNIBNames.settingsWindow)
+        self.settingsWindow = self.settingsWindow ?? SettingsWindow(windowNibName: NSNib.Name(rawValue: kNIBNames.settingsWindow))
         self.settingsWindow?.showWindow(self)
         self.settingsWindow?.window?.orderFront(self)
     }
     
     @IBAction func closeApplication(_ sender: Any) {
-        NSApplication.shared().terminate(self)
+        NSApplication.shared.terminate(self)
     }
 }

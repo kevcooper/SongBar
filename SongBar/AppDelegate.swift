@@ -29,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             UserDefaults.standard.synchronize()
         }
         self.mediaController = MediaController()
-        sysBar = NSStatusBar.system().statusItem(withLength: variableStatusItemLength);
+        sysBar = NSStatusBar.system.statusItem(withLength: variableStatusItemLength);
         sysBar.menu = menu
         sysBar.updateStatusBar(itemTitle: kMiscStrings.songbar)
         

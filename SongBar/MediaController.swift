@@ -37,10 +37,10 @@ class MediaController: NSObject {
         }
     }
     
-    func updateTitleFromNotification(_ aNotification: Notification) {
+    @objc func updateTitleFromNotification(_ aNotification: Notification) {
         let sender: String = aNotification.name.rawValue
         let userInfo: [String : AnyObject] = aNotification.userInfo as! [String : AnyObject]
-        let sysBar = (NSApplication.shared().delegate as! AppDelegate).sysBar
+        let sysBar = (NSApplication.shared.delegate as! AppDelegate).sysBar
         
         switch sender {
         case kNotificationNames.iTunesNotification:
@@ -102,8 +102,8 @@ class MediaController: NSObject {
     func stringWidthWithFont(string: NSString, font: NSFont?)-> CGFloat {
         let boundingSize: NSSize = NSSize(width: .greatestFiniteMagnitude, height: musicHeight)
         let labelSize: NSRect = string.boundingRect(with: boundingSize,
-                                                    options: .usesLineFragmentOrigin,
-                                                    attributes: [NSFontAttributeName : font ?? NSFont.systemFont(ofSize: 14)])
+                                                    options: NSString.DrawingOptions.usesLineFragmentOrigin,
+                                                    attributes: [NSAttributedStringKey.font : font ?? NSFont.systemFont(ofSize: 14)])
         return labelSize.width
     }
     

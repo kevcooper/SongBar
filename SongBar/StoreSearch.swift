@@ -44,7 +44,7 @@ class StoreSearch: NSObject {
                     let songDictionary: NSDictionary = songArray[0] as! NSDictionary
                     var songURL: String = songDictionary["trackViewUrl"] as! String
                     songURL =  songURL.replacingOccurrences(of: "https://", with: "itms://")
-                    NSWorkspace.shared().open(URL(string: "\(songURL)&app=itunes")!)
+                    NSWorkspace.shared.open(URL(string: "\(songURL)&app=itunes")!)
                 })
             }
         })
