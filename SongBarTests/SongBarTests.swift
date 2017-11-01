@@ -29,8 +29,13 @@ class SongBarTests: XCTestCase {
     
     func testRunningApps() {
         // the XCAssert should change depending on what's running
-        let runningApps: [SBApplication] = MediaController.runningPlayers()
+        let runningApps: [Player] = MediaController.runningPlayers()
         XCTAssertEqual(runningApps.count, 2)
+    }
+    
+    func testPlayingApp() {
+        let playingApp: Player = MediaController.playingService()
+        XCTAssertEqual(playingApp.application, kServices.spotify)
     }
     
     func testPerformanceExample() {
