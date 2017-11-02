@@ -13,11 +13,10 @@ struct kNotificationNames {
     static let iTunesNotification = "com.apple.iTunes.playerInfo"
     static let spotifyNotification = "com.spotify.client.PlaybackStateChanged"
 }
+
 //Default Keys
 struct kUserDefaults {
-    static let supportiTunes = "supportiTunes"
-    static let supportSpotify = "supportSpotify"
-    static let isInitalized = "initalized"
+    static let fullTitle = "fullTitle"
 }
 
 //Bundel IDs
@@ -61,4 +60,11 @@ enum kServices {
 enum kPlaybackStates {
     case playing
     case paused
+}
+
+//Extentions
+
+extension Notification.Name {
+    static let iTunesNotification = Notification.Name(rawValue: "com.apple.iTunes.playerInfo")
+    static let spotifyNotification = Notification.Name(rawValue: "com.spotify.client.PlaybackStateChanged")
 }

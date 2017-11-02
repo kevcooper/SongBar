@@ -80,84 +80,59 @@ class MediaController: NSObject {
         return services[0]
     }
     
-//        iTunes = SBApplication(bundleIdentifier:kBundelIdentifiers.iTunes)!
-//        if let spotify = SBApplication(bundleIdentifier: kBundelIdentifiers.spotify)
-//        {
-//            self.Spotify = spotify
-//        }
+    class func titleFrom(info: [AnyHashable : Any]) -> String {
+        
+        var title: String = kMiscStrings.songbar
+        var artist: String?
+        
+        if let name: String = info["Name"] as? String {
+            title = name
+        } else {
+            if let name: String = info["title"] as? String {
+                title = name
+            }
+        }
+        
+        if let Artist: String = info["Artist"] as? String {
+            artist = Artist
+        } else {
+            if let Artist: String = info["artist"] as? String {
+                artist = Artist
+            } else {
+                artist = nil
+            }
+        }
+        return artist != nil ? "\(title) - \(artist!)" : title
     }
-    
-//    @objc func updateTitleFromNotification(_ aNotification: Notification) {
-//        let sender: String = aNotification.name.rawValue
-//        let userInfo: [String : AnyObject] = aNotification.userInfo as! [String : AnyObject]
-//        let sysBar = (NSApplication.shared.delegate as! AppDelegate).sysBar
-//        
-//        switch sender {
-//        case kNotificationNames.iTunesNotification:
-//            self.lastServiceUpdated = kServices.iTunes
-//            if self.iTunes == nil {
-//                self.iTunes = SBApplication(bundleIdentifier: kBundelIdentifiers.iTunes)
-//            }
-//            break
-//        case kNotificationNames.spotifyNotification:
-//            self.lastServiceUpdated = kServices.spotify
-//            if self.Spotify == nil {
-//                self.Spotify = SBApplication(bundleIdentifier: kBundelIdentifiers.spotify)
-//            }
-//            break
-//        default:
-//            break
-//        }
-//        
-//        let title: String
-//        let artist: String?
-//        if let _: String = userInfo["Name"] as? String {
-//            title = userInfo["Name"] as! String
-//        } else {
-//            if let _: String = userInfo["title"] as? String {
-//                title = userInfo["title"] as! String
-//            } else {
-//                  sysBar?.updateStatusBar(itemTitle: kMiscStrings.songbar)
-//                return
-//                }
-//            }
-//        
-//        if let _: String = userInfo["Artist"] as? String {
-//            artist = userInfo["Artist"] as? String
-//        } else {
-//            if let _: String = userInfo["artist"] as? String {
-//                artist = userInfo["artist"] as? String
-//            } else {
-//                  artist = nil
-//              }
-//            }
-//        let fullTrackText: String = artist != nil ? "\(title) - \(artist!)" : title
-//        sysBar?.updateStatusBar(itemTitle: maxLengthString(fullString: fullTrackText))
-//    }
-//    
+
+    class func maxLengthString(fullString: String) -> String {
+        if UserDefaults.standard.bool(forKey: kUserDefaults.fullTitle) {
+            return fullString
+        }
+        
+        let middleCharIndex = fullString.index(fullString.startIndex, offsetBy: fullString.characters.count / 2)
+        var firstHalf: String = String(fullString[..<middleCharIndex])
+        var lastHalf: String = String(fullString[middleCharIndex...])
+        
+        while stringWidthWithFont(string: "\(firstHalf)\(lastHalf)" as NSString, font: nil)  > musicWidth {
+            firstHalf.characters = firstHalf.characters.dropLast(1)
+            lastHalf.characters = lastHalf.characters.dropFirst(1)
+        }
+
+        return fullString == "\(firstHalf)\(lastHalf)" ? fullString : "\(firstHalf)...\(lastHalf)"
+        
+    }
+
+
+    class func stringWidthWithFont(string: NSString, font: NSFont?) -> CGFloat {
+        let boundingSize: NSSize = NSSize(width: .greatestFiniteMagnitude, height: musicHeight)
+        let labelSize: NSRect = string.boundingRect(with: boundingSize,
+                                                    options: NSString.DrawingOptions.usesLineFragmentOrigin,
+                                                    attributes: [NSAttributedStringKey.font : font ?? NSFont.systemFont(ofSize: 14)])
+        return labelSize.width
+    }
+}
 //
-//    func maxLengthString(fullString: String)-> String {
-//        let middleCharIndex = fullString.index(fullString.startIndex, offsetBy: fullString.characters.count / 2)
-//        var firstHalf: String = fullString.substring(to: middleCharIndex)
-//        var lastHalf: String = fullString.substring(from: middleCharIndex)
-//        
-//        while stringWidthWithFont(string: "\(firstHalf)\(lastHalf)" as NSString, font: nil)  > musicWidth {
-//            firstHalf.characters = firstHalf.characters.dropLast(1)
-//            lastHalf.characters = lastHalf.characters.dropFirst(1)
-//        }
-//
-//        return fullString == "\(firstHalf)\(lastHalf)" ? fullString : "\(firstHalf)...\(lastHalf)" 
-//        
-//    }
-//    
-//    func stringWidthWithFont(string: NSString, font: NSFont?)-> CGFloat {
-//        let boundingSize: NSSize = NSSize(width: .greatestFiniteMagnitude, height: musicHeight)
-//        let labelSize: NSRect = string.boundingRect(with: boundingSize,
-//                                                    options: NSString.DrawingOptions.usesLineFragmentOrigin,
-//                                                    attributes: [NSAttributedStringKey.font : font ?? NSFont.systemFont(ofSize: 14)])
-//        return labelSize.width
-//    }
-//    
 //    func playPauseLastService() -> kPlaybackStates {
 //        var playbackState: kPlaybackStates
 //        guard let lastService: kServices = self.lastServiceUpdated
