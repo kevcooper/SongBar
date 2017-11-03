@@ -16,17 +16,13 @@ class SettingsWindow: NSWindowController {
     
     override func windowDidLoad() {
         super.windowDidLoad()
-        self.iTunesCheckBox.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: kUserDefaults.supportiTunes))
-        self.spotifyCheckBox.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: kUserDefaults.supportSpotify))
     }
     
     @IBAction func toggleiTunesSupport(_ sender: Any) {
-        UserDefaults.standard.set(self.iTunesCheckBox.state, forKey: kUserDefaults.supportiTunes)
-        UserDefaults.standard.synchronize()
+    
     }
     
     @IBAction func toggleSpotifySupport(_ sender: Any) {
-        UserDefaults.standard.set(self.spotifyCheckBox.state, forKey: kUserDefaults.supportSpotify)
-        UserDefaults.standard.synchronize()
+        
     }
 }

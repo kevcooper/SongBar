@@ -14,25 +14,18 @@ import AppKit
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var menu: NSMenu!
-    var mediaController: MediaController?
+    let mediaController: MediaController = MediaController()
+    let listener: DistributedNotificationCenterListener = DistributedNotificationCenterListener()
     var sysBar: NSStatusItem!
     
     //magic number
     let variableStatusItemLength: CGFloat = -1
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        if UserDefaults.standard.bool(forKey: kUserDefaults.isInitalized) == false {
-            UserDefaults.standard.set(true, forKey: kUserDefaults.supportiTunes)
-            UserDefaults.standard.set(true, forKey: kUserDefaults.supportSpotify)
-            // add suport for radiant here once pull request is accepted
-            UserDefaults.standard.set(true, forKey: kUserDefaults.isInitalized)
-            UserDefaults.standard.synchronize()
-        }
-        self.mediaController = MediaController()
         sysBar = NSStatusBar.system.statusItem(withLength: variableStatusItemLength);
         sysBar.menu = menu
-        sysBar.updateStatusBar(itemTitle: kMiscStrings.songbar)
-        
+        sysBar.updateStatusBar(itemTitle: MediaController.playingServiceTitle())
+        print(MediaController.playingServiceTitle())
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

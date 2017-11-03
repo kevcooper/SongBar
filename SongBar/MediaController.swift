@@ -104,7 +104,27 @@ class MediaController: NSObject {
         }
         return artist != nil ? "\(title) - \(artist!)" : title
     }
-
+    
+    class func titleFrom(player: Player) -> String {
+        let application: AnyObject = player.bridgedApplication as AnyObject
+        var title: String
+        var artist: String
+        switch player.application {
+        case .iTunes:
+            let track: iTunesTrack = application.currentTrack
+            title = track.name
+            artist = track.artist
+            break
+        case .spotify:
+            let track: SpotifyTrack = application.currentTrack
+            title = track.name
+            artist = track.artist
+            break
+        }
+        let fullTitle: String = artist == "" ? title : "\(title) - \(artist)"
+        return maxLengthString(fullString: fullTitle)
+    }
+    
     class func maxLengthString(fullString: String) -> String {
         if UserDefaults.standard.bool(forKey: kUserDefaults.fullTitle) {
             return fullString
@@ -130,6 +150,12 @@ class MediaController: NSObject {
                                                     options: NSString.DrawingOptions.usesLineFragmentOrigin,
                                                     attributes: [NSAttributedStringKey.font : font ?? NSFont.systemFont(ofSize: 14)])
         return labelSize.width
+    }
+    
+    class func playingServiceTitle() -> String {
+        let player: Player = playingService()
+        let title = titleFrom(player: player)
+        return title
     }
 }
 //
