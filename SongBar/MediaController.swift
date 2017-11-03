@@ -50,7 +50,7 @@ class MediaController: NSObject {
             return runningPlayers
         }
     
-    class func playingService() -> Player {
+    class func playingService() -> Player? {
         let services: [Player] = runningPlayers()
         // Determaning what app to take control of
         
@@ -77,7 +77,7 @@ class MediaController: NSObject {
         }
         
         // Default to first player
-        return services[0]
+        return services.count >= 1 ? services[0] : nil
     }
     
     class func titleFrom(info: [AnyHashable : Any]) -> String {
@@ -153,52 +153,35 @@ class MediaController: NSObject {
     }
     
     class func playingServiceTitle() -> String {
-        let player: Player = playingService()
+        guard let player: Player = playingService() else {
+            return kMiscStrings.songbar
+        }
         let title = titleFrom(player: player)
         return title
     }
+
+    class func playPauseLastService() -> kPlaybackStates {
+        guard let player: Player = playingService() else {
+            return kPlaybackStates.paused
+        }
+        let application: AnyObject = player.bridgedApplication as AnyObject
+        application.playpause()
+        return playbackState(player: player)
+    }
+
+    class func playbackState(player: Player) -> kPlaybackStates {
+        let application: AnyObject = player.bridgedApplication as AnyObject
+        switch player.application {
+        case .iTunes:
+            let state: iTunesEPlS = application.playerState
+            return state == iTunesEPlSPlaying ? .playing : .paused
+        case .spotify:
+            let state: SpotifyEPlS = application.playerState
+            return state == SpotifyEPlSPlaying ? .playing : .paused
+        }
+    }
 }
-//
-//    func playPauseLastService() -> kPlaybackStates {
-//        var playbackState: kPlaybackStates
-//        guard let lastService: kServices = self.lastServiceUpdated
-//            else {
-//                return kPlaybackStates.paused
-//        }
-//        
-//        switch lastService {
-//        case kServices.iTunes:
-//            if self.iTunes?.playerState == iTunesEPlSPlaying{
-//                playbackState = kPlaybackStates.paused
-//            } else {
-//                playbackState = kPlaybackStates.playing
-//            }
-//            self.iTunes?.playpause()
-//            break
-//        case kServices.spotify:
-//            if self.Spotify?.playerState == SpotifyEPlSPlaying {
-//                playbackState = kPlaybackStates.paused
-//            } else {
-//                playbackState = kPlaybackStates.playing
-//            }
-//            self.Spotify?.playpause()
-//            break
-//        }
-//        return playbackState
-//    }
-//    
-//    func playBackStatus() -> kPlaybackStates {
-//        guard let lastService: kServices = self.lastServiceUpdated
-//            else {
-//                return kPlaybackStates.playing
-//        }
-//        switch lastService {
-//        case kServices.iTunes:
-//            return self.iTunes?.playerState == iTunesEPlSPlaying ? kPlaybackStates.playing : kPlaybackStates.paused
-//        case kServices.spotify:
-//            return self.Spotify?.playerState == SpotifyEPlSPlaying ? kPlaybackStates.playing : kPlaybackStates.paused
-//        }
-//    }
+
 //    
 //    func fastForwardLastService() {
 //        guard let lastService: kServices = self.lastServiceUpdated
