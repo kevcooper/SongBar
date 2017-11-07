@@ -14,7 +14,6 @@ class ViewMenuItem: NSMenuItem {
         super.init(coder: decoder)
         view?.wantsLayer = true
         let frame: NSRect = NSRect(x: 0, y: 0, width: 320.0, height: 95.0)
-        
         let musicView = MusicView(frame: frame)
         view = musicView
     }

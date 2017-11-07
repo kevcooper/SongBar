@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var menu: NSMenu!
     let mediaController: MediaController = MediaController()
-    let listener: DistributedNotificationCenterListener = DistributedNotificationCenterListener()
+    let listener: PlayerNotificationCenterListener = PlayerNotificationCenterListener()
     var sysBar: NSStatusItem!
     
     //magic number
@@ -23,9 +23,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         sysBar = NSStatusBar.system.statusItem(withLength: variableStatusItemLength);
+        sysBar.updateStatusBar(itemTitle: mediaController.playingServiceTitle())
         sysBar.menu = menu
-        sysBar.updateStatusBar(itemTitle: MediaController.playingServiceTitle())
-        print(MediaController.playingServiceTitle())
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

@@ -9,48 +9,44 @@
 import Cocoa
 import ScriptingBridge
 
-class MediaController: NSObject {
+struct MediaController {
     
-    override init() {
-        super.init()
+    func installedPlayers() -> [kServices] {
+        var installedPlayers: [kServices] = []
+        if let _ = LSCopyApplicationURLsForBundleIdentifier(kBundelIdentifiers.iTunes as CFString, nil) {
+            installedPlayers.append(.iTunes)
+        }
+        if let _ = LSCopyApplicationURLsForBundleIdentifier(kBundelIdentifiers.spotify as CFString, nil) {
+            installedPlayers.append(.spotify)
+        }
+        return installedPlayers
     }
-        
-        class func installedPlayers() -> [kServices] {
-            var installedPlayers: [kServices] = []
-            if let _ = LSCopyApplicationURLsForBundleIdentifier(kBundelIdentifiers.iTunes as CFString, nil) {
-                installedPlayers.append(.iTunes)
-            }
-            if let _ = LSCopyApplicationURLsForBundleIdentifier(kBundelIdentifiers.spotify as CFString, nil) {
-                installedPlayers.append(.spotify)
-            }
-            return installedPlayers
-        }
-        
-    class func runningPlayers() -> [Player] {
-            let runningApps: [NSRunningApplication] = NSWorkspace.shared.runningApplications
-        var runningPlayers: [Player] = [Player]()
-            
-            if runningApps.contains(where: { (application) -> Bool in
-                application.bundleIdentifier == kBundelIdentifiers.iTunes
-            }) {
-                if let itunes: SBApplication = SBApplication(bundleIdentifier: kBundelIdentifiers.iTunes) {
-                    runningPlayers.append(Player(application: .iTunes,
-                                                 bridgedApplication: itunes))
-                }
-                
-            }
-            if runningApps.contains(where: { (application) -> Bool in
-                application.bundleIdentifier == kBundelIdentifiers.spotify
-            }) {
-                if let spotify: SBApplication = SBApplication(bundleIdentifier: kBundelIdentifiers.spotify) {
-                    runningPlayers.append(Player(application: .spotify,
-                                                 bridgedApplication: spotify))
-                }
-            }
-            return runningPlayers
-        }
     
-    class func playingService() -> Player? {
+    func runningPlayers() -> [Player] {
+        let runningApps: [NSRunningApplication] = NSWorkspace.shared.runningApplications
+        var runningPlayers: [Player] = [Player]()
+        
+        if runningApps.contains(where: { (application) -> Bool in
+            application.bundleIdentifier == kBundelIdentifiers.iTunes
+        }) {
+            if let itunes: SBApplication = SBApplication(bundleIdentifier: kBundelIdentifiers.iTunes) {
+                runningPlayers.append(Player(application: .iTunes,
+                                             bridgedApplication: itunes))
+            }
+            
+        }
+        if runningApps.contains(where: { (application) -> Bool in
+            application.bundleIdentifier == kBundelIdentifiers.spotify
+        }) {
+            if let spotify: SBApplication = SBApplication(bundleIdentifier: kBundelIdentifiers.spotify) {
+                runningPlayers.append(Player(application: .spotify,
+                                             bridgedApplication: spotify))
+            }
+        }
+        return runningPlayers
+    }
+    
+    @discardableResult func playingService() -> Player? {
         let services: [Player] = runningPlayers()
         // Determaning what app to take control of
         
@@ -80,7 +76,7 @@ class MediaController: NSObject {
         return services.count >= 1 ? services[0] : nil
     }
     
-    class func titleFrom(info: [AnyHashable : Any]) -> String {
+    func titleFrom(info: [AnyHashable : Any]) -> String {
         
         var title: String = kMiscStrings.songbar
         var artist: String?
@@ -105,7 +101,7 @@ class MediaController: NSObject {
         return artist != nil ? "\(title) - \(artist!)" : title
     }
     
-    class func titleFrom(player: Player) -> String {
+    func titleFrom(player: Player) -> String {
         let application: AnyObject = player.bridgedApplication as AnyObject
         var title: String
         var artist: String
@@ -125,7 +121,7 @@ class MediaController: NSObject {
         return maxLengthString(fullString: fullTitle)
     }
     
-    class func maxLengthString(fullString: String) -> String {
+    func maxLengthString(fullString: String) -> String {
         if UserDefaults.standard.bool(forKey: kUserDefaults.fullTitle) {
             return fullString
         }
@@ -138,13 +134,13 @@ class MediaController: NSObject {
             firstHalf.characters = firstHalf.characters.dropLast(1)
             lastHalf.characters = lastHalf.characters.dropFirst(1)
         }
-
+        
         return fullString == "\(firstHalf)\(lastHalf)" ? fullString : "\(firstHalf)...\(lastHalf)"
         
     }
-
-
-    class func stringWidthWithFont(string: NSString, font: NSFont?) -> CGFloat {
+    
+    
+    func stringWidthWithFont(string: NSString, font: NSFont?) -> CGFloat {
         let boundingSize: NSSize = NSSize(width: .greatestFiniteMagnitude, height: musicHeight)
         let labelSize: NSRect = string.boundingRect(with: boundingSize,
                                                     options: NSString.DrawingOptions.usesLineFragmentOrigin,
@@ -152,24 +148,23 @@ class MediaController: NSObject {
         return labelSize.width
     }
     
-    class func playingServiceTitle() -> String {
+    func playingServiceTitle() -> String {
         guard let player: Player = playingService() else {
             return kMiscStrings.songbar
         }
         let title = titleFrom(player: player)
         return title
     }
-
-    class func playPauseLastService() -> kPlaybackStates {
+    
+    func playPauseLastService() {
         guard let player: Player = playingService() else {
-            return kPlaybackStates.paused
+            return
         }
         let application: AnyObject = player.bridgedApplication as AnyObject
         application.playpause()
-        return playbackState(player: player)
     }
-
-    class func playbackState(player: Player) -> kPlaybackStates {
+    
+    func playbackState(player: Player) -> kPlaybackStates {
         let application: AnyObject = player.bridgedApplication as AnyObject
         switch player.application {
         case .iTunes:
@@ -180,36 +175,26 @@ class MediaController: NSObject {
             return state == SpotifyEPlSPlaying ? .playing : .paused
         }
     }
+    
+    func playNext() {
+        guard let player: Player = playingService() else {
+            return
+        }
+        (player.bridgedApplication as AnyObject).nextTrack()
+    }
+    
+    func playPrevious() {
+        guard let player: Player = playingService() else {
+            return
+        }
+        switch player.application {
+        case .iTunes:
+            (player.bridgedApplication as AnyObject).previousTrack()
+            break
+        case .spotify:
+            //TODO: Jump to begining of track if not in first 3 seconds
+            (player.bridgedApplication as AnyObject).previousTrack()
+            break
+        }
+    }
 }
-
-//    
-//    func fastForwardLastService() {
-//        guard let lastService: kServices = self.lastServiceUpdated
-//            else{
-//                return
-//        }
-//        switch lastService {
-//        case kServices.iTunes:
-//            self.iTunes?.nextTrack()
-//            break
-//        case kServices.spotify:
-//            self.Spotify?.nextTrack()
-//            break
-//        }
-//    }
-//
-//    func rewindLastService() {
-//        guard let lastService: kServices = self.lastServiceUpdated
-//            else{
-//                return
-//        }
-//        switch lastService {
-//        case kServices.iTunes:
-//            self.iTunes?.previousTrack()
-//            break
-//        case kServices.spotify:
-//            self.Spotify?.previousTrack()
-//            break
-//        }
-//    }
-

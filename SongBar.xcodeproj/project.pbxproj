@@ -24,7 +24,7 @@
 		D06F057A1E62B1CE0085800C /* StatusItem + SongBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06F05791E62B1CE0085800C /* StatusItem + SongBar.swift */; };
 		D0726E301E624098003A5920 /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0726E2F1E624098003A5920 /* MusicView.swift */; };
 		D0726E321E624743003A5920 /* ViewMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0726E311E624743003A5920 /* ViewMenuItem.swift */; };
-		D0A210181FAABA84008533EE /* DistributedNotificationCenterListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A210171FAABA84008533EE /* DistributedNotificationCenterListener.swift */; };
+		D0A210181FAABA84008533EE /* PlayerNotificationCenterListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A210171FAABA84008533EE /* PlayerNotificationCenterListener.swift */; };
 		D0C80D741E610FA800DCF192 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C80D731E610FA800DCF192 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +60,7 @@
 		D06F05791E62B1CE0085800C /* StatusItem + SongBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StatusItem + SongBar.swift"; sourceTree = "<group>"; };
 		D0726E2F1E624098003A5920 /* MusicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
 		D0726E311E624743003A5920 /* ViewMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewMenuItem.swift; sourceTree = "<group>"; };
-		D0A210171FAABA84008533EE /* DistributedNotificationCenterListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributedNotificationCenterListener.swift; sourceTree = "<group>"; };
+		D0A210171FAABA84008533EE /* PlayerNotificationCenterListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNotificationCenterListener.swift; sourceTree = "<group>"; };
 		D0BEEFC11E5FBB990074EB25 /* Spotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spotify.h; sourceTree = "<group>"; };
 		D0BEEFC21E5FBBB50074EB25 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
 		D0C80D731E610FA800DCF192 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 				D0502ACB1B757770009A90BF /* StoreSearch.swift */,
 				D006466F1E5FCFDB00354D07 /* MediaController.swift */,
 				D06F05791E62B1CE0085800C /* StatusItem + SongBar.swift */,
-				D0A210171FAABA84008533EE /* DistributedNotificationCenterListener.swift */,
+				D0A210171FAABA84008533EE /* PlayerNotificationCenterListener.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -313,7 +313,7 @@
 				D00F2D141FAA65FD005D326A /* Player.swift in Sources */,
 				D0050CB51E6388CA000B2DAF /* SettingsWindow.swift in Sources */,
 				D00646701E5FCFDB00354D07 /* MediaController.swift in Sources */,
-				D0A210181FAABA84008533EE /* DistributedNotificationCenterListener.swift in Sources */,
+				D0A210181FAABA84008533EE /* PlayerNotificationCenterListener.swift in Sources */,
 				36491D3619F6F3330083A49D /* AppDelegate.swift in Sources */,
 				D0726E301E624098003A5920 /* MusicView.swift in Sources */,
 				D0502ACC1B757770009A90BF /* StoreSearch.swift in Sources */,
