@@ -189,10 +189,9 @@ struct MediaController {
         }
         switch player.application {
         case .iTunes:
-            (player.bridgedApplication as AnyObject).previousTrack()
+            (player.bridgedApplication as AnyObject).backTrack()
             break
         case .spotify:
-            //TODO: Jump to begining of track if not in first 3 seconds
             (player.bridgedApplication as AnyObject).previousTrack()
             break
         }
