@@ -73,20 +73,6 @@
                         <action selector="downloadFromITS:" target="n3t-0i-vrh" id="C8d-4g-Sn2"/>
                     </connections>
                 </button>
-                <button allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WLn-sj-qw1">
-                    <rect key="frame" x="295" y="0.0" width="25" height="25"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="25" id="HmA-8M-9fd"/>
-                        <constraint firstAttribute="width" constant="25" id="cKr-jg-clw"/>
-                    </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSActionTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Wtj-1C-Yzz">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="displaySettings:" target="n3t-0i-vrh" id="atI-mT-L34"/>
-                    </connections>
-                </button>
                 <button toolTip="Close SongBar" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xQ4-Lz-xSJ">
                     <rect key="frame" x="5" y="76" width="15" height="15"/>
                     <constraints>
@@ -101,20 +87,34 @@
                         <action selector="closeApplication:" target="n3t-0i-vrh" id="tTh-FV-Tsm"/>
                     </connections>
                 </button>
+                <button toolTip="Download from iTunes Store" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f1X-HZ-btE">
+                    <rect key="frame" x="292" y="0.0" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="XJD-gn-WID"/>
+                        <constraint firstAttribute="width" constant="25" id="zcd-kt-25p"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Gear" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="E3u-vr-Wgz">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="displaySettings:" target="-2" id="El8-5e-h98"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="3wh-pU-Nc6" firstAttribute="centerY" secondItem="X4y-B1-3N1" secondAttribute="centerY" id="26K-C9-0oR"/>
-                <constraint firstAttribute="bottom" secondItem="WLn-sj-qw1" secondAttribute="bottom" id="QzR-nh-x3v"/>
+                <constraint firstAttribute="bottom" secondItem="f1X-HZ-btE" secondAttribute="bottom" id="H4R-g1-hwe"/>
                 <constraint firstItem="pF7-9K-NhP" firstAttribute="centerY" secondItem="X4y-B1-3N1" secondAttribute="centerY" id="Ta6-Y1-2m0"/>
                 <constraint firstItem="xQ4-Lz-xSJ" firstAttribute="leading" secondItem="n3t-0i-vrh" secondAttribute="leading" constant="5" id="cpW-Nu-dUM"/>
                 <constraint firstItem="Kzr-2S-g6h" firstAttribute="leading" secondItem="n3t-0i-vrh" secondAttribute="leading" id="eQr-qP-DdN"/>
                 <constraint firstItem="X4y-B1-3N1" firstAttribute="centerY" secondItem="n3t-0i-vrh" secondAttribute="centerY" id="jyK-1a-2Wi"/>
-                <constraint firstAttribute="trailing" secondItem="WLn-sj-qw1" secondAttribute="trailing" id="mmt-mp-aR6"/>
                 <constraint firstItem="X4y-B1-3N1" firstAttribute="leading" secondItem="pF7-9K-NhP" secondAttribute="trailing" constant="26" id="oTz-NS-JJ7"/>
                 <constraint firstItem="xQ4-Lz-xSJ" firstAttribute="top" secondItem="n3t-0i-vrh" secondAttribute="top" constant="5" id="qP0-29-6v8"/>
                 <constraint firstAttribute="bottom" secondItem="Kzr-2S-g6h" secondAttribute="bottom" id="rPB-gq-Fdz"/>
                 <constraint firstItem="X4y-B1-3N1" firstAttribute="centerX" secondItem="n3t-0i-vrh" secondAttribute="centerX" id="vGr-8w-sPp"/>
                 <constraint firstItem="3wh-pU-Nc6" firstAttribute="leading" secondItem="X4y-B1-3N1" secondAttribute="trailing" constant="28" id="xqG-Cx-Vrd"/>
+                <constraint firstAttribute="trailing" secondItem="f1X-HZ-btE" secondAttribute="trailing" constant="3" id="zIk-IU-3SQ"/>
             </constraints>
             <connections>
                 <outlet property="ffbutton" destination="3wh-pU-Nc6" id="V4L-dY-UJ2"/>
@@ -125,7 +125,7 @@
         </customView>
     </objects>
     <resources>
-        <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="Gear" width="64" height="64"/>
         <image name="NSStopProgressTemplate" width="11" height="11"/>
         <image name="download" width="39" height="57"/>
         <image name="fastforward" width="155" height="155"/>

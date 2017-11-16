@@ -11,8 +11,7 @@ import Cocoa
 class SettingsWindow: NSWindowController {
 
     @IBOutlet weak var view: NSView!
-    @IBOutlet weak var iTunesCheckBox: NSButton!
-    @IBOutlet weak var spotifyCheckBox: NSButton!
+  
     
     override func windowDidLoad() {
         super.windowDidLoad()

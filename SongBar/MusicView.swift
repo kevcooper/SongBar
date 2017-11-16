@@ -14,7 +14,6 @@ class MusicView: NSView {
     @IBOutlet weak var playButton: NSButton?
     @IBOutlet weak var ffbutton: NSButton!
     @IBOutlet weak var rewindbutton: NSButton!
-//    var initalized: Bool = false
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -37,13 +36,13 @@ class MusicView: NSView {
     }
     
     override func viewWillDraw() {
-            let mediaController: MediaController = (NSApplication.shared.delegate as! AppDelegate).mediaController
-            if let player: Player = mediaController.playingService() {
-                let state: kPlaybackStates = mediaController.playbackState(player: player)
-                setButtonForState(state: state)
-            }
+        let mediaController: MediaController = (NSApplication.shared.delegate as! AppDelegate).mediaController
+        if let player: Player = mediaController.playingService() {
+            let state: kPlaybackStates = mediaController.playbackState(player: player)
+            setButtonForState(state: state)
+        }
     }
-
+    
     func setButtonForState(state: kPlaybackStates) {
         if let button: NSButton = playButton {
             switch state {
@@ -73,26 +72,26 @@ class MusicView: NSView {
     
     
     @IBAction func ffClicked(_ sender: Any) {
-                let mediaController: MediaController = (NSApplication.shared.delegate as! AppDelegate).mediaController
-                mediaController.playNext()
+        let mediaController: MediaController = (NSApplication.shared.delegate as! AppDelegate).mediaController
+        mediaController.playNext()
     }
     
     @IBAction func rewindClicked(_ sender: Any) {
-                let mediaController: MediaController = (NSApplication.shared.delegate as! AppDelegate).mediaController
-                mediaController.playPrevious()
+        let mediaController: MediaController = (NSApplication.shared.delegate as! AppDelegate).mediaController
+        mediaController.playPrevious()
     }
     
     @IBAction func downloadFromITS(_ sender: Any) {
-                let appDeleagate: AppDelegate = (NSApplication.shared.delegate as! AppDelegate)
-                if appDeleagate.sysBar.title != kMiscStrings.songbar && appDeleagate.sysBar.title != kMiscStrings.beats && appDeleagate.sysBar.title != nil {
-                    StoreSearch.search(appDeleagate.sysBar.title!)
-                }
+        let appDeleagate: AppDelegate = (NSApplication.shared.delegate as! AppDelegate)
+        if appDeleagate.sysBar.title != kMiscStrings.songbar && appDeleagate.sysBar.title != kMiscStrings.beats && appDeleagate.sysBar.title != nil {
+            StoreSearch.search(appDeleagate.sysBar.title!)
+        }
     }
     
     @IBAction func displaySettings(_ sender: Any) {
-        //        self.settingsWindow = self.settingsWindow ?? SettingsWindow(windowNibName: NSNib.Name(rawValue: kNIBNames.settingsWindow))
-        //        self.settingsWindow?.showWindow(self)
-        //        self.settingsWindow?.window?.orderFront(self)
+        let settingsWindow = SettingsWindow(windowNibName: NSNib.Name(rawValue: kNIBNames.settingsWindow))
+        settingsWindow.showWindow(self)
+        settingsWindow.window?.orderFront(self)
     }
     
     @IBAction func closeApplication(_ sender: Any) {
