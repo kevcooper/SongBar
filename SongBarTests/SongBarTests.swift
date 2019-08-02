@@ -2,12 +2,13 @@
 //  SongBarTests.swift
 //  SongBarTests
 //
-//  Created by Kevin Cooper on 10/21/14.
-//  Copyright (c) 2014 corpe. All rights reserved.
+//  Created by Justin Oakes on 31/10/17.
+//  Copyright © 2017 corpe. All rights reserved.
 //
 
-import Cocoa
 import XCTest
+import Cocoa
+import ScriptingBridge
 
 class SongBarTests: XCTestCase {
     
@@ -21,16 +22,20 @@ class SongBarTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testInstalledApps() {
+        let installedApps: [kServices] = MediaController.installedPlayers()
+        XCTAssertEqual(installedApps.count , 2)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
+    func testRunningApps() {
+        // the XCAssert should change depending on what's running
+        let runningApps: [Player] = MediaController.runningPlayers()
+        XCTAssertEqual(runningApps.count, 2)
+    }
+    
+    func testPlayingApp() {
+        let playingApp: Player = MediaController.playingService()
+        XCTAssertEqual(playingApp.application, kServices.spotify)
     }
     
 }
